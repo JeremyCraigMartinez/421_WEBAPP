@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :servers
+
   get 'main/index'
 
   root 'main#index'
