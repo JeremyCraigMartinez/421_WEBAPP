@@ -177,6 +177,7 @@ DEPENDENCIES
   angularjs-rails (= 1.2.6)
   bootstrap-sass-rails (= 3.0.3.0)
   byebug
+  capistrano (~> 3.4.0)
   capistrano-passenger
   capistrano-rails
   coffee-rails (~> 4.1.0)
