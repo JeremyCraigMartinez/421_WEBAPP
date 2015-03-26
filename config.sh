@@ -126,7 +126,7 @@ sudo ln -s /etc/nginx/sites-available/myapp /etc/nginx/sites-enabled/myapp
 sudo service nginx start
 
 # setup init script for unicorn
-sudo nano /etc/init.d/unicorn_myapp
+sudo vim /etc/init.d/unicorn_myapp
 
 : <<'END'
 #!/bin/sh
@@ -411,3 +411,27 @@ listen "/tmp/unicorn.testapp.sock"
 worker_processes 1
 timeout 30
 END
+
+sudo vim /home/deploy/.bashrc
+export SECRET_KEY_BASE=[REPLACE WITH YOUR SECRET]
+
+# restart nginx
+sudo service nginx restart
+
+sudo chown -R deploy /opt/www/myapp
+sudo usermod -a -G jeremy deploy
+
+# Run some pre-checks
+bin/cap production git:check
+bin/cap production deploy:check
+
+# DEPLOY!!!
+bin/cap production deploy
+
+# if you need to run db:seed
+# log into server as the deploy user and run the following
+cd /opt/www/testapp/current ; bin/rake RAILS_ENV=production db:seed
+
+# if you are having problems, try running a console on the server
+# log in as deploy user and run the following
+cd /opt/www/testapp/current ; bin/rails c production
