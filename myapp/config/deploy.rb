@@ -4,7 +4,7 @@ lock '3.4.0'
 set :application, 'myapp'
 set :repo_url, 'git@github.com:JeremyCraigMartinez/421_WEBAPP.git'
 set :deploy_to, '/opt/www/myapp'
-set :user, 'deploy'
+set :user, 'jeremy'
 set :linked_dirs, %w{log tmp/pids tmp/cache tmp/sockets}
 
 # Default branch is :master
