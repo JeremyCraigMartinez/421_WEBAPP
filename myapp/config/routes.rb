@@ -1,11 +1,4 @@
 Rails.application.routes.draw do
-<<<<<<< HEAD
-=======
-  resources :servers
-
-  get 'main/index'
-
->>>>>>> 7edf802cb1580c531188c9508095ffd91d3851ae
   root 'main#index'
 
   resources :servers
