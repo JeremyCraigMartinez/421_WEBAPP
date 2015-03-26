@@ -1,3 +1,8 @@
+#server configuration details (most) found here:
+# http://www.rubytreesoftware.com/resources/securely-setup-ubuntu-1404-server
+# http://www.rubytreesoftware.com/resources/ruby-on-rails-41-ubuntu-1404-server-configuration
+# http://www.rubytreesoftware.com/resources/ruby-on-rails-41-ubuntu-1404-server-deployment
+
 sudo apt-get update
 sudo apt-get upgrade
 
@@ -350,19 +355,46 @@ rails g scaffold Server name:string ip_address:string
 #establish root in routes.rb (already did)
 #styling in scss file for controller for root specicified above^^
 
-git commit -am 'added server scaffolr'
-git push #...
+touch .ruby-version
+echo "2.1.5" >> .ruby-version
 
 #in gemfile
 #	gem 'unicorn'
 #	gem 'capistrano-rails', group: :development
+# gem 'capistrano-passenger'
 
 bundle install
 bundle binstubs capistrano
-
 bin/cap install
 
-touch Capfile
-echo "require 'capistrano/setup'" >> Capfile
-echo "require 'capistrano/deploy'" >> Capfile
-echo "require 'capistrano/rails'" >> Capfile
+#Add the following below require 'capistrano/deploy' in the Capfile in the root of your app
+# require 'capistrano/rails'
+
+#Add / Replace this configuration in config/deploy.rb file
+: <<'END'
+set :application, 'testapp'
+set :repo_url, 'git@github.com:cjamison/testapp.git'
+set :deploy_to, '/opt/www/testapp'
+set :user, 'deploy'
+set :linked_dirs, %w{log tmp/pids tmp/cache tmp/sockets}
+
+namespace :deploy do
+
+  %w[start stop restart].each do |command|
+    desc 'Manage Unicorn'
+    task command do
+      on roles(:app), in: :sequence, wait: 1 do
+        execute "/etc/init.d/unicorn_#{fetch(:application)} #{command}"
+      end      
+    end
+  end
+
+  after :publishing, :restart
+
+end
+END
+
+#Alter the configuration in /config/deploy/production.rb with your server ip or domain name
+# role :app, %w{deploy@0.0.0.0}
+# role :web, %w{deploy@0.0.0.0}
+# role :db,  %w{deploy@0.0.0.0}
