@@ -43,12 +43,19 @@ git clone git@github.com:JeremyCraigMartinez/421_WEBAPP.git
 cd 421_WEBAPP/myapp
 bundle install
 
+#for server only. web server configuration
 #need to do
 sudo add-apt-repository ppa:nginx/stable
 sudo aptitude update
 sudo aptitude -y install nginx
 
 sudo adduser deploy --disabled-password
+
+#############################################
+#############################################
+
+#############################################
+#############################################
 
 sudo mkdir /home/deploy/.ssh
 sudo chown -R deploy /home/deploy/.ssh
