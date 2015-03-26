@@ -398,3 +398,16 @@ END
 # role :app, %w{deploy@0.0.0.0}
 # role :web, %w{deploy@0.0.0.0}
 # role :db,  %w{deploy@0.0.0.0}
+
+#Create config/unicorn.rb with the following contents
+: <<'END'
+root = "/opt/www/testapp/current"
+working_directory root
+pid "#{root}/tmp/pids/unicorn.pid"
+stderr_path "#{root}/log/unicorn.log"
+stdout_path "#{root}/log/unicorn.log"
+
+listen "/tmp/unicorn.testapp.sock"
+worker_processes 1
+timeout 30
+END
