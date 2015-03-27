@@ -8,6 +8,8 @@ This is the skeleton code. Watch the tutorial, most views (HTML and CSS) will be
 
 This web application will be a tool for clinicians to monitor patients with wearable sensors. Below is a breakdown of the logical sections and their ideal capabilities. It is possible that some of the items will be too difficult to implement and so will be either ignored, worked around, or postponed until Fall. However, the power of AngularJS should make many of the difficult aspects relatively easy.
 
+"Item?" of course, means it is uncertain whether the item should be included.
+
 ## Before Login
 
 User is unable to access patient data until they login.
@@ -61,6 +63,8 @@ All pages share the same navigation bar, consisting of:
 
 ### Home
 
+An overview with the purpose of helping the user navigate to patient/group pages of interest.
+
 * Search bar (specialized filter)
   - Only show patients in table with an attribute containing the search term 
 * Checkboxes to add/remove attributes shown in table
@@ -92,7 +96,7 @@ Provides a detailed view of data for an individual patient. Can be viewed by use
   - Conditions
   - Risk? 
     * How much could deviation from specified activity thresholds impact the patient's health? 
-    * Would be used for weighting the patient's status relative to the other patient's
+    * Would be used for weighting the patient's status relative to the other patient
   - Status (not editable: automatically updated)
     * How is the patient doing based on their success/failure meeting activity thresholds?
   - Ethnicity?
@@ -104,7 +108,7 @@ Provides a detailed view of data for an individual patient. Can be viewed by use
 * List of users allowed to *View & Edit*
 * Activity Thresholds
   - Form:
-    * < Activity > < Amount Descriptor > [Intensity] per/every/each < Time Period>
+    * < Activity > < Amount Descriptor > [ Intensity ] per/every/each < Time Period>
   - Examples:
     * (1) Walk at least 3000 steps every week.
     * (2) Run at most 1000 steps at high intensity per day.
@@ -130,11 +134,11 @@ Provides a detailed view of data for an individual patient. Can be viewed by use
 * List of users allowed to *View & Edit*
 * Activity Thresholds
   - Form:
-    * [ Filter ] < Activity > < Amount Descriptor > [Intensity] per/every/each < Time Period>
+    * [ Filter ] < Activity > < Amount Descriptor > [ Intensity ] per/every/each < Time Period>
   - Examples:
     * (1) All group members: Sit-ups at least 10 every day.
-    * (2) Group members over with weight under 200: Walk at least 3000 steps every week.
-    * (3) Group members over with age over 60: Run at most 1000 steps at high intensity per day.
+    * (2) Group members with weight under 200: Walk at least 3000 steps every week.
+    * (3) Group members with age over 60: Run at most 1000 steps at high intensity per day.
 * Alerts
   - Patient
     * Send notification "..." to any patient in group that fails to meet an activity threshold.
