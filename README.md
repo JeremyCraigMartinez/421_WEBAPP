@@ -4,6 +4,18 @@ It's just up for the hell of it. It isn't using a product server so it's slow. E
 
 This is the skeleton code. Watch the tutorial, most views (HTML and CSS) will be in app/assets I believe. 
 
+# Questions
+
+* Can a study group ever be composed of a group of smaller study groups?
+* Do we need to know who is responsible for every study group?
+* Can a patient ever belong to multiple study groups?
+* Apart from sensor data, what other patient information do we need to collect?
+  - Study group, birthday(age), height, and weight seem necessary.
+  - What about contact information like email, phone, and/or address?
+  - For each patient, do we need to know which clinician is responsible for their wellbeing?
+  - Ethnicity?
+  - Would a picture of the patient be helpful or is it supposed to be more impersonal?
+
 # Design
 
 This web application will be a tool for clinicians to monitor patients with wearable sensors. Below is a breakdown of the sections and their ideal capabilities. It is possible that some of the items will be too difficult to implement and so will be either ignored, worked around, or postponed until Fall. However, the power of AngularJS should make many of the difficult aspects relatively easy.
@@ -50,7 +62,7 @@ Reset password for a user who forgot it.
 
 ## After Login
 
-Users can now edit and/or view patient data if they have permission. Can be given permission to *View Only* or *View & Edit* a patient or group. Permission for a group applies not only to the group, but also all patients who are members of the group. 
+Users can now edit and/or view patient data if they have permission. Can be given permission to *View Only* or *View & Edit* a patient or group. Permission for a group applies not only to the group, but also all patients who are members of the group.
 
 All pages share the same navigation bar, consisting of:
 
@@ -62,6 +74,8 @@ All pages share the same navigation bar, consisting of:
   - Allow groups within groups???
 * Search 
   - Display matching patient/group names on a drop-down list
+
+**Change: Specify that groups are study groups.**
 
 ### Home
 
