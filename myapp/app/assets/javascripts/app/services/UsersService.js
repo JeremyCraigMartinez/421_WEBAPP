@@ -29,4 +29,3 @@ angular.module('myapp.services')
 			return deferred.promise;
 		}
 	});
-
