@@ -19,206 +19,25 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">Wearable Sensors Project</a>
+      <a class="navbar-brand" href="/">Wearable Sensors Project</a>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#">Overview</a></li>
-
-        <li role="presentation">
-        <a href="#">Notifications<span class="badge">12</span></a>
-        </li>
-        <!--
-        <li class="dropdown">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown" 
-          role="button" aria-expanded="false">
-          Dropdown <span class="caret"></span>
-        </a>
-        -->
-        <ul class="dropdown-menu" role="menu">
-          <li><a href="#">Action</a></li>
-          <li><a href="#">Another action</a></li>
-          <li><a href="#">Something else here</a></li>
-          <li class="divider"></li>
-          <li class="dropdown-header">Nav header</li>
-          <li><a href="#">Separated link</a></li>
-          <li><a href="#">One more separated link</a></li>
-        </ul>
+        <li><a href="/login">Login/Signup</a></li>
+        <li><a href="/overview">Overview</a></li>
+        <li role="presentation"><a href="#">Notifications <span class="badge">12</span></a></li>
         </li>
         <li><a href="#">Settings</a></li>
         <li><a href="#">Profile</a></li>
-        <li><a href="#">Help</a></li>
+        <li><a href="#">Help&nbsp;&nbsp;</a></li>
       </ul>
 
     </div>
   </div>
 </nav>
 
-<!--
-    <div class="container" id="primary">
-      <div class="row">
-        <div id="main" ng-view></div>
-      </div>
-    </div> 
-    -->
 
-<div ng-controller="MyController">
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-md-8 col-md-offset-2 main">
-
-        <h2 class="sub-header">Overview</h2>
-
-        <input type="text" ng-model="searchKeyword" placeholder="Search"> 
-
-        <div class="table-responsive">
-          <table class="table table-striped">
-            <thead>
-              <tr>
-                <th>
-                  <a href="" 
-                    ng-click="orderByField='id'; reverseSort = !reverseSort">
-                    ID
-                  </a>
-                </th>
-                <th>
-                  <a href="" 
-                    ng-click="orderByField='group'; reverseSort = !reverseSort">
-                    Group
-                  </a>
-                </th>
-                <th>
-                  <a href="" 
-                    ng-click="orderByField='first_name'; reverseSort = !reverseSort">
-                    First Name
-                  </a>
-                </th>
-                <th>
-                  <a href="" 
-                    ng-click="orderByField='last_name'; reverseSort = !reverseSort">
-                    Last Name
-                  </a>
-                </th>
-                <th>
-                  <a href="" 
-                    ng-click="orderByField='sex'; reverseSort = !reverseSort">
-                    Sex 
-                  </a>
-                </th>
-                <th>
-                  <a href="" 
-                    ng-click="orderByField='age'; reverseSort = !reverseSort">
-                    Age
-                  </a>
-                </th>
-                <th>
-                  <a href="" 
-                    ng-click="orderByField='height'; reverseSort = !reverseSort">
-                    Height (in)
-                  </a>
-                </th>
-                <th>
-                  <a href="" 
-                    ng-click="orderByField='weight'; reverseSort = !reverseSort">
-                    Weight (lb)
-                  </a>
-                </th>
-                <th>
-                  <a href="" 
-                    ng-click="orderByField='bmi'; reverseSort = !reverseSort">
-                    BMI Score
-                  </a>
-                </th>
-                <th>
-                  <a href="" 
-                    ng-click="orderByField='bmi'; reverseSort = !reverseSort">
-                    BMI Category 
-                  </a>
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-
-            <tr ng-repeat="patient in patients | 
-              filter: searchKeyword | 
-              orderBy:orderByField:reverseSort">
-
-              <td>{{patient.id}}</td>
-              <td>{{patient.group}}</td>
-              <td>{{patient.first_name}}</td>
-              <td>{{patient.last_name}}</td>
-              <td>{{patient.sex}}</td>
-              <td>{{patient.age}}</td>
-              <td>{{patient.height}}</td>
-              <td>{{patient.weight}}</td>
-
-              <td 
-                ng-init="patient.bmi = 
-                roundNumber(
-                (patient.weight / 
-                (patient.height * patient.height)) * 703, 2)">
-                {{patient.bmi}}
-              </td>
-
-              <!-- http://www.nhlbi.nih.gov/health/educational/lose_wt/BMI/bmicalc.htm -->
-              <td ng-if="patient.bmi < 18.5">Underweight</td>
-              <td ng-if="18.5 <= patient.bmi && patient.bmi <= 24.9">Normal Weight</td>
-              <td ng-if="25.0 <= patient.bmi && patient.bmi <= 29.9">Overweight</td>
-              <td ng-if="30.0 <= patient.bmi">Obese</td>
-
-              <!-- Remove Patient Button -->
-              <td>
-                <input type="button" value="Remove" class="btn btn-primary" 
-                ng-click="removePatient(patient.id)"/>
-              </td>
-
-            </tr>
-            </tbody>
-          </table>
-        </div>
-
-        <!-- Add Patient -->
-        <h2>Add a Patient</h2>
-        <form class="form-horizontal" ng-submit="addPatient()" role="form">
-          <div class="form-group">
-
-            <input class"form-control" type="text" 
-            ng-model="group" name="group" placeholder="Group"</input>
-
-            <input class"form-control" type="text" 
-            ng-model="first_name" name="first_name" placeholder="first_name"</input>
-
-            <input class"form-control" type="text" 
-            ng-model="last_name" name="last_name" placeholder="last_name"</input>
-
-            <input class"form-control" type="text" 
-            ng-model="sex" name="sex" placeholder="sex"</input>
-
-            <input class"form-control" type="number" 
-            ng-model="age" name="age" placeholder="age"</input>
-
-            <input class"form-control" type="number" 
-            ng-model="weight" name="weight" placeholder="weight"</input>
-
-            <input class"form-control" type="number" 
-            ng-model="height" name="height" placeholder="height"</input>
-
-            <input class="btn btn-primary" type="submit" value="Submit"></input>
-          </div>
-        </form>
-
-      </div>
-    </div>
-  </div>
-</div>
-
-<!--
-<footer class="footer">
-  <div class="container">
-    <p class="text-muted">A WSU Project</p>
-  </div>
-</footer>
--->
+<div ng-view></div>
 
 <%= javascript_include_tag "application" %>
 </body>
