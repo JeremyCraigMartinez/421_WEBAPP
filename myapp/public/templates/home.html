@@ -1,0 +1,110 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2 main">
+
+      <h2 class="sub-header">Overview</h2>
+
+      <input type="text" ng-model="searchKeyword" placeholder="Search"> 
+
+      <div class="table-responsive">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>
+                <a href="" 
+                  ng-click="orderByField='id'; reverseSort = !reverseSort">
+                  ID
+                </a>
+              </th>
+              <th>
+                <a href="" 
+                  ng-click="orderByField='group'; reverseSort = !reverseSort">
+                  Group
+                </a>
+              </th>
+              <th>
+                <a href="" 
+                  ng-click="orderByField='first_name'; reverseSort = !reverseSort">
+                  First Name
+                </a>
+              </th>
+              <th>
+                <a href="" 
+                  ng-click="orderByField='last_name'; reverseSort = !reverseSort">
+                  Last Name
+                </a>
+              </th>
+              <th>
+                <a href="" 
+                  ng-click="orderByField='sex'; reverseSort = !reverseSort">
+                  Sex 
+                </a>
+              </th>
+              <th>
+                <a href="" 
+                  ng-click="orderByField='age'; reverseSort = !reverseSort">
+                  Age
+                </a>
+              </th>
+              <th>
+                <a href="" 
+                  ng-click="orderByField='height'; reverseSort = !reverseSort">
+                  Height (in)
+                </a>
+              </th>
+              <th>
+                <a href="" 
+                  ng-click="orderByField='weight'; reverseSort = !reverseSort">
+                  Weight (lb)
+                </a>
+              </th>
+              <th>
+                <a href="" 
+                  ng-click="orderByField='bmi'; reverseSort = !reverseSort">
+                  BMI Score
+                </a>
+              </th>
+              <th>
+                <a href="" 
+                  ng-click="orderByField='bmi'; reverseSort = !reverseSort">
+                  BMI Category 
+                </a>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+
+          <tr ng-repeat="patient in patients track by $index">
+
+            <td>{{patient.id}}</td>
+            <td>{{patient.group}}</td>
+            <td>{{patient.first_name}}</td>
+            <td>{{patient.last_name}}</td>
+            <td>{{patient.sex}}</td>
+            <td>{{patient.age}}</td>
+            <td>{{patient.height}}</td>
+            <td>{{patient.weight}}</td>
+
+            <td 
+              ng-init="patient.bmi = 
+              roundNumber(
+              (patient.weight / 
+              (patient.height * patient.height)) * 703, 2)">
+              {{patient.bmi}}
+            </td>
+
+            <!-- http://www.nhlbi.nih.gov/health/educational/lose_wt/BMI/bmicalc.htm -->
+            <td ng-if="patient.bmi < 18.5">Underweight</td>
+            <td ng-if="18.5 <= patient.bmi && patient.bmi <= 24.9">Normal Weight</td>
+            <td ng-if="25.0 <= patient.bmi && patient.bmi <= 29.9">Overweight</td>
+            <td ng-if="30.0 <= patient.bmi">Obese</td>
+
+
+          </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+  </div>
+</div>
