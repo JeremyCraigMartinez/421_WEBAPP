@@ -6,7 +6,7 @@ angular.module('myapp.services')
 			var deferred = $q.defer();
 			$http({
 				method: "POST",
-				url: "http://localhost:5024/user/create",
+				url: "http://104.236.169.12:5024/user/create",
 				data: {email:email,pass:pass}
 			})
 			.then(function(res) {
