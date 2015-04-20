@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('myapp.services')
-	.service('LoginService', function($http, $q) {
+	.service('SignupService', function($http, $q) {
 		this.signup = function(email, pass) {
 			var deferred = $q.defer();
 			$http({
