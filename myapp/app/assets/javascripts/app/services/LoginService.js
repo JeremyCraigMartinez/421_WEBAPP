@@ -6,15 +6,15 @@ angular.module('myapp.services')
 			var deferred = $q.defer();
 			$http({
 				method: "POST",
-				url: "http://104.236.169.12:5024/user/create",
+				url: "http://104.236.169.12:5024/login",
 				data: {email:email,pass:pass}
 			})
 			.then(function(res) {
 				deferred.resolve(res.data);
 			})
 			.catch(function(error) {
+				console.log('login error');
 				console.log(error);
-				alert(error);
 			});
 			return deferred.promise;
 		}

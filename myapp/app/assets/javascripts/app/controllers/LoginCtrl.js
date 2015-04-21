@@ -6,10 +6,10 @@ angular.module('myapp.controllers')
       $scope.signup = function(email, pass) {
 	      LoginService.signup(email, pass)
 	      .then(function(status) {
-	       	alert(status);
+	       	console.log("login");
 	      })
 	      .catch(function(error) {
-	      	alert(error);
+	      	console.log("login error");
 	      });
       }
   });
