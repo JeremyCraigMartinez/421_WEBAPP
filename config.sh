@@ -1,3 +1,8 @@
+#on home -> change from 104.236.169.12 to localhost
+# grep -lr "104.236.169.12:5024" | xargs sed -i 's/104.236.169.12/localhost/g'
+#on server (before push) -> change from localhost to 104.236.169.12
+# grep -lr "localhost:5024" | xargs sed -i 's/localhost/104.236.169.12/g'
+
 #server configuration details (most) found here:
 # http://www.rubytreesoftware.com/resources/securely-setup-ubuntu-1404-server
 # http://www.rubytreesoftware.com/resources/ruby-on-rails-41-ubuntu-1404-server-configuration

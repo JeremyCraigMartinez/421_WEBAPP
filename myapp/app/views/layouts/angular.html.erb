@@ -20,18 +20,10 @@
         <span class="icon-bar"></span>
       </button>
       <a class="navbar-brand" href="/">Wearable Sensors Project</a>
+      <a class="navbar-brand" ng-if="currentUser" href="/overview">Overview</a>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="/login">Login/Signup</a></li>
-        <li><a href="/overview">Overview</a></li>
-        <li role="presentation"><a href="#">Notifications <span class="badge">12</span></a></li>
-        </li>
-        <li><a href="#">Settings</a></li>
-        <li><a href="#">Profile</a></li>
-        <li><a href="#">Help&nbsp;&nbsp;</a></li>
-      </ul>
-
+      <div user-panel class="login-directive"></div>
     </div>
   </div>
 </nav>
