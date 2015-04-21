@@ -1,4 +1,4 @@
-The stupid website is up and running. Checkout 104.236.191.59:3000.
+Checkout 104.131.145.68.
 
 It's just up for the hell of it. It isn't using a product server so it's slow. Eventually (tomorrow hopefully) I will configure a server stack of nginx, unicorn, and capistrano for a long term solution of deployment
 
