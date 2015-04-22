@@ -23,8 +23,12 @@ angular.module('myapp.services')
 				deferred.resolve(res.data);
 			})
 			.catch(function(error) {
-				console.log('user: '+id+' has no info');
-				deferred.resolve(null);
+				if (error.status === 404) {
+					console.log('user: '+id+' has no info');
+					deferred.reject(error);
+				}
+				else 
+					console.log(error);
 			});
 			return deferred.promise;
 		}
