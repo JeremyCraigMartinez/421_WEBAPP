@@ -1,9 +1,9 @@
 #!/bin/sh
 
-location="."
+location="~/421_WEBAPP/myapp/app/assets/javascripts/app/services"
 ext="js"
-localAddress="dragon"
-serverAddress="dog"
+localAddress="localhost"
+serverAddress="104.236.169.12"
 
 
 echo "Changing $localAddress to $serverAddress recursively in '$location'"
