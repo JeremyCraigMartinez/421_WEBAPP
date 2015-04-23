@@ -1,40 +1,201 @@
-<div class="jumbotron">
-  <div class="container">
-    <h1>Welcome to the Wearable Sensors Project!</h1>
-    <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
-    <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more &raquo;</a></p>
-  </div>
-</div>
-
+<!-- Welcome title and description -->
 <div class="container">
-
   <div class="row">
-    <div class="col-md-6">
-      <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus</p>
+    <div class="jumbotron">
+      <h1>Wearable Sensors Project</h1>
+      <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
+      <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more &raquo;</a></p>
     </div>
-
-    <div class="col-md-6">
-      <form class="form-signin" action="overview.html">
-        <h2 class="form-signin-heading">Log In <small>(<a href="/signup">sign up</a>)</small></h2>
-        <label for="login.email" class="sr-only">Email address</label>
-        <input type="email" ng-model="login.email" id="login.email" class="form-control" placeholder="Email address" required autofocus>
-        <label for="login.password" class="sr-only">Password</label>
-        <input type="password" id="login.password" class="form-control" placeholder="Password" ng-model="login.password" required>
-        <div class="checkbox">
-          <label>
-            <input type="checkbox" value="remember-me">
-            <span>Remember me</span>
-          </label>
-          <span class="separator">·</span>
-          <a class="forgot" href="">Forgot password?</a>
-        </div>
-        <button class="btn btn-lg btn-primary btn-block" type="submit" ng-click="submitLogin()">Log in</button>
-      </form>
+  </div><!-- /row -->
+</div><!-- /container -->
 
 
-    </div>
-  </div>
+<!-- Forms -->
+<div class="container">
+  <div class="row">
+
+    <!-- Left Column -->
+    <div class="left-col-split col-md-6">
+      <!-- Form: Sign in --> 
+      <div class="form col-md-8 col-md-offset-2">
+        <h2 class="form-heading">Sign in</h2>
+        <form role="form" action="overview.html"  ng-submit="submitLogin()" role="form">
+          <div class="form-group">
+            <label for="login.email" class="control-label">Email</label>
+            <input type="email" ng-model="login.email" id="login.email" class="form-control" 
+            placeholder="Enter your email address" required autofocus>
+          </div>
+
+          <div class="form-group">
+            <label for="login.password" class="control-label">Password</label>
+            <input type="password" id="login.password" class="form-control" 
+            placeholder="Enter your password" ng-model="login.password" required>
+
+            <label class="control-label">
+              <input type="checkbox" value="remember-me">
+              <span>Remember me</span>
+            </label>
+            <span class="separator">·</span>
+            <a class="forgot" href="">Forgot password?</a>
+          </div>
+
+          <div class="form-group">
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+          </div>
+        </form><!-- /Form: Sign in -->
+      </div><!-- /Form Container -->
+    </div><!-- /Left Column -->
 
 
+    <!-- Right Column -->
+    <div class="right-col-split col-md-6">
+      <!-- Form: Create Account -->
+      <div class="form col-md-8 col-md-offset-2">
+        <h2 class="form-heading">Create an account</h2>
+        <form role="form" action="overview.html"  ng-submit="signup(email,pass)" role="form">
+          <div class="form-group">
+            <label for="inputEmail" class="control-label">Email address</label>
+            <input type="email" ng-model="email" id="inputEmail" class="form-control" 
+            placeholder="Enter your email address" required autofocus>
+          </div>
 
-</div> <!-- /container -->
+          <div class="form-group">
+            <label for="inputPassword" class="control-label">Password</label>
+            <input type="password" id="inputPassword" class="form-control" 
+            placeholder="Enter your password" ng-model="pass" required>
+          </div>
+
+          <!-- Leave out Confirm Password to make testing easier
+                <div class="form-group">
+                <label for="inputPassword" class="control-label">Confirm Password</label>
+                <input type="password" id="inputPassword" class="form-control" placeholder="Confirm your password" ng-model="pass" required>
+                -->
+
+          <div class="form-group">
+            <label for="inputFirstName" class="control-label">First Name</label>
+            <input id="inputFirstName" class="form-control" 
+            ng-model="firstName" placeholder="Enter your first name" required>
+          </div>
+
+          <div class="form-group">
+            <label for="inputLastName" class="control-label">Last Name</label>
+            <input id="inputLastName" class="form-control" 
+            ng-model="lastName" placeholder="Enter your last name" required>
+          </div>
+
+          <!-- Determine User Type: Doctor or Patient? -->
+          <div class="form-group">
+            <label class="radio-inline">
+              <input type="radio" name="userType" value="doctor" ng-model="type"/>Clinician
+            </label>
+            <label class="radio-inline">
+              <input type="radio" name="userType" value="patient" ng-model="type"/>Patient
+            </label>
+          </div>
+
+          <!-- Doctor Information -->
+          <div id="doctor-info" ng-if="user.type == 'doctor'">
+            <div class="form-group">
+              <label for="inputHospital" class="control-label">Medical Facility</label>
+              <input id="inputHospital" class="form-control" 
+              ng-model="hospital" placeholder="Enter where you practice medicine" required>
+            </div>
+          </div><!-- /Doctor Information -->
+
+          <!-- Patient Information -->
+          <div id="patient-info" ng-if="user.type == 'patient'">
+            <div class="form-group">
+              <label for="inputAge" class="control-label">Age (years)</label>
+              <input type="number" min="0" step="1" 
+              id="inputAge" class="form-control" ng-model="age" 
+              placeholder="Enter your age in years" required>
+            </div>
+            <!-- Birthday 
+                <div class="form-group">
+                    <label for="birthday" class="col-md-2 control-label">Name</label>
+                    <div class="col-md-10">
+                        <div class="form-inline">
+
+                            <div class="form-group">
+                                <input class="form-control" type="text" 
+                                ng-model="first_name" name="first_name" placeholder="First">
+                            </div>
+
+                            <div class="form-group">
+                                <input class="form-control" type="text" 
+                                ng-model="last_name" name="last_name" placeholder="Last">
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                -->
+
+            <div class="form-group">
+              <label for="inputHeight" class="control-label">Height (in)</label>
+              <input type="number"  min="0" step="1" 
+              id="inputHeight" class="form-control" ng-model="height" 
+              placeholder="Enter your height in inches" required>
+            </div>
+            <!-- Height with feet/inches, could get really fancy and have toggle for metric
+                <div class="form-group">
+                    <label for="inputHeight" class="col-md-2 control-label">Height</label>
+                    <div class="col-md-2">
+                        <div class="form-inline" id="inputHeight">
+                            <div class="form-group">
+                                <input id="inputHeight" class="form-control" type="number" ng-model="height" placeholder="Feet" required>
+                            </div>
+                            <div class="form-group">
+                                <input id="inputHeight" class="form-control" type="number" ng-model="height" placeholder="Inches" required>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                -->
+
+            <div class="form-group form-inline">
+              <label for="inputWeight" class="control-label">Weight (lb)</label>
+              <input type="number"  min="0" step="1" 
+              id="inputWeight" class="form-control" ng-model="weight" 
+              placeholder="Enter your weight in pounds" required>
+            </div>
+
+            <!--
+                <div class="form-group">
+                    <label for="inputSex" class="control-label">Sex</label>
+                    <select id="inputSex" class="form-control" ng-model="sex" required>
+                        <option>Male</option>
+                        <option>Female</option>
+                        <option>Intersex</option>
+                    </select>
+                </div>
+                -->
+            <div class="form-group" required>
+              <label for="inputSex" class="radio-inline">
+                <input type="radio" name="sex" value="male" required/>Male
+              </label>
+              <label for="inputSex" class="radio-inline">
+                <input type="radio" name="sex" value="female" />Female
+              </label>
+              <label for="inputSex" class="radio-inline">
+                <input type="radio" name="sex" value="intersex" />Intersex
+              </label>
+            </div>
+
+            <div class="form-group">
+              <label for="inputGroup" class="control-label">Study Group</label>
+              <input id="inputGroup" class="form-control" ng-model="group" 
+              placeholder="Enter your study group">
+            </div>
+
+            <div class="form-group">
+              <button type="submit" class="btn btn-lg btn-primary btn-block">Create Account</button>
+            </div>
+          </div><!-- /Patient Information -->
+
+        </form><!-- /Form: Create Account -->
+      </div><!-- Form Container -->
+    </div><!-- /Right Column -->
+
+  </div><!-- /row -->
+</div><!-- /container -->

@@ -10,25 +10,43 @@ body {
 */
 
 body {
-  padding-top: 50px;
+    padding-top: 50px;
 }
 
 .jumbotron {
-  padding: 0.5em 0.6em;
-  h1 {
-    font-size: 2em;
-  }
-  p {
-    font-size: 1.2em;
-    .btn {
-      padding: 0.5em;
+    padding: 0.5em 0.6em;
+    h1 {
+        font-size: 2em;
     }
-  }
+    p {
+        font-size: 1.2em;
+        .btn {
+            padding: 0.5em;
+        }
+    }
+}
+
+.form {
+    padding: 5px 40px;
+    background-color: #EEEEEE;
+    border: 1px solid #dbdbdb;
+    border-radius: 0.5em;
+    box-shadow: none;
+}
+
+label {
+    font-size: 1em;
+    font-weight: normal;
+}
+
+
+.right-col-split {
+    border-left: 1px #000000;
 }
 
 .login-directive {
-  padding-top: 10px;
-  padding-right: 10px;
-  font-size: 20px;
-  float: right;
+    padding-top: 10px;
+    padding-right: 10px;
+    font-size: 20px;
+    float: right;
 }
