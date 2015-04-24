@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('myapp.controllers')
-	.controller('AccountController', 
+	.controller('ProfileController', 
     function($scope, AccountService) {
       /*AccountService.patients().then(function(patients) {
         $scope.patients = [];
