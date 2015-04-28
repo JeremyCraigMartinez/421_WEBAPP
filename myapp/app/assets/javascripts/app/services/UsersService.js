@@ -6,7 +6,7 @@ angular.module('myapp.services')
 			var deferred = $q.defer();
 			$http({
 				method: "GET",
-				url: "http://localhost:5024/user",
+				url: "http://localhost:5024/patients",
 			}).
 			then(function(res) {
 				deferred.resolve(res.data);
@@ -17,14 +17,14 @@ angular.module('myapp.services')
 			var deferred = $q.defer();
 			$http({
 				method: "GET",
-				url: "http://localhost:5024/user/"+id,
+				url: "http://localhost:5024/patients/"+id,
 			})
 			.then(function(res) {
 				deferred.resolve(res.data);
 			})
 			.catch(function(error) {
 				if (error.status === 404) {
-					console.log('user: '+id+' has no info');
+					console.log('patients: '+id+' has no info');
 					deferred.reject(error);
 				}
 				else 

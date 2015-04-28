@@ -3,12 +3,11 @@
   <div class="row">
     <div class="jumbotron">
       <h1>Wearable Sensors Project</h1>
-      <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
-      <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more &raquo;</a></p>
+      <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p> 
+      </div>
     </div>
   </div><!-- /row -->
 </div><!-- /container -->
-
 
 <!-- Forms -->
 <div class="container">
@@ -94,16 +93,21 @@
           </div>
 
           <!-- Doctor Information -->
-          <div id="doctor-info" ng-if="user.type == 'doctor'">
+          <div id="doctor-info" ng-if="type==='doctor'">
             <div class="form-group">
-              <label for="inputHospital" class="control-label">Medical Facility</label>
-              <input id="inputHospital" class="form-control" 
+              <label for="Hospital" class="control-label">Hospital</label>
+              <input id="Hospital" class="form-control" 
               ng-model="hospital" placeholder="Enter where you practice medicine" required>
+            </div>
+            <div class="form-group">
+              <label for="Specialty" class="control-label">Specialty</label>
+              <input id="Specialty" class="form-control" 
+              ng-model="specialty" placeholder="Enter where you practice medicine" required>
             </div>
           </div><!-- /Doctor Information -->
 
           <!-- Patient Information -->
-          <div id="patient-info" ng-if="user.type == 'patient'">
+          <div id="patient-info" ng-if="type==='patient'">
             <div class="form-group">
               <label for="inputAge" class="control-label">Age (years)</label>
               <input type="number" min="0" step="1" 
@@ -177,13 +181,10 @@
               <label for="inputSex" class="radio-inline">
                 <input type="radio" name="sex" value="female" />Female
               </label>
-              <label for="inputSex" class="radio-inline">
-                <input type="radio" name="sex" value="intersex" />Intersex
-              </label>
             </div>
 
             <div class="form-group">
-              <label for="inputGroup" class="control-label">Study Group</label>
+              <label for="inputGroup" class="control-label">Group</label>
               <input id="inputGroup" class="form-control" ng-model="group" 
               placeholder="Enter your study group">
             </div>

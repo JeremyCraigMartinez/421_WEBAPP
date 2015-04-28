@@ -27,7 +27,7 @@ angular.module('myapp.services')
 				$rootScope.$broadcast("user:unset");
 
 				deferred.resolve();
-				$location.path('/');
+				$location.path('/login');
 				return deferred.promise;
 			}
 
@@ -48,24 +48,3 @@ angular.module('myapp.services')
 				return deferred.promise;
 			}
 		});
-/*'use strict';
-
-angular.module('myapp.services')
-	.service('LoginService', function($http, $q) {
-		this.signup = function(email, pass) {
-			var deferred = $q.defer();
-			$http({
-				method: "POST",
-				url: "http://localhost:5024/login",
-				data: {email:email,pass:pass}
-			})
-			.then(function(res) {
-				deferred.resolve(res.data);
-			})
-			.catch(function(error) {
-				console.log('login error');
-				console.log(error);
-			});
-			return deferred.promise;
-		}
-	});*/

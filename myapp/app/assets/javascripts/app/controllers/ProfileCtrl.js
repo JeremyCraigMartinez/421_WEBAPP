@@ -2,14 +2,8 @@
 
 angular.module('myapp.controllers')
 	.controller('ProfileController', 
-    function($scope, AccountService) {
-      /*AccountService.patients().then(function(patients) {
-        $scope.patients = [];
-        for (var patient in patients) {
-          AccountService.patient_info(patients[patient]).then(function(info) {
-            if (info)
-              $scope.patients.push(info);
-          });
-        }
-      });*/
+    function($scope, ProfileService, $routeParams) {
+      ProfileService.patient_info($routeParams['user_id']).then(function (info) {
+        $scope.patient_info = info;
+      });
   });
