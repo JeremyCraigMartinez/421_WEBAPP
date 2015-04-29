@@ -14,14 +14,14 @@ angular.module('myapp.controllers')
 				LoginService.login($scope.signup.email).then(function(user) {
 					console.log(user);
 					$scope.user = user;
-					$location.path('/');
+					$location.path('/overview');
 				});
 			}
 
 			$scope.submitLogin = function() {
 				LoginService.login($scope.login.email).then(function(user) {
 					$scope.user = user;
-					$location.path('/');
+					$location.path('/overview');
 				});
 			}
 		});

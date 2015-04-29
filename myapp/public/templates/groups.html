@@ -1,0 +1,40 @@
+<title>Overview</title>
+
+<div class="container">
+  <div class="row">
+    <div class="main">
+      <h1 class="page-header">Overview</h1>
+
+      <p>
+      <button class="btn btn-lg btn-primary" type="button">
+        + Add Group
+      </button>
+      </p>
+
+      <div class="row">
+        <div class="col-md-6 col-md-offset-1">
+          <form class="navbar-form navbar-right">
+            <input type="text" class="form-control" placeholder="Search...">
+          </form>
+
+        </div>
+      </div>
+
+      <div class="table-responsive">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>Group</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="group in groups">
+              <td>{{group}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="col-sm-3 col-md-2 sidebar"></div>
+  </div>
+</div>
