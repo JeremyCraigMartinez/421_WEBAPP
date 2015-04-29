@@ -1,7 +1,7 @@
 <!-- public/templates/user_panel.html -->
 <div ng-if="currentUser">
   Logged in as <a href="/user/{{currentUser.id}}">{{currentUser.email}}</a>
-  (<a ng-click="logout()">Log out</a>)
+  (<a href="#" ng-click="logout()">Log out</a>)
 </div>
 
 <div ng-if="!currentUser">

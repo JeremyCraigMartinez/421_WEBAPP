@@ -18,7 +18,7 @@
                   ID
                 </a>
               </th>
-              <th>
+              <th ng-hide>
                 <a href="" 
                   ng-click="orderByField='group'; reverseSort = !reverseSort">
                   Group
@@ -79,7 +79,7 @@
           <tr ng-repeat="patient in patients track by $index">
 
             <td><a href="/user/{{patient._id}}">{{patient._id}}</a></td>
-            <td>{{patient.group}}</td>
+            <td ng-hide>{{patient.group}}</td>
             <td><a href="/user/{{patient._id}}">{{patient.first_name}}</a></td>
             <td><a href="/user/{{patient._id}}">{{patient.last_name}}</a></td>
             <td>{{patient.sex}}</td>
@@ -88,18 +88,15 @@
             <td>{{patient.weight}}</td>
 
             <td 
-              ng-init="patient.bmi = 
-              roundNumber(
-              (patient.weight / 
-              (patient.height * patient.height)) * 703, 2)">
-              {{patient.bmi}}
+              ng-init="bmi=Math.round((patient.weight/(patient.height*patient.height))*703)">
+              {{bmi}}
             </td>
 
             <!-- http://www.nhlbi.nih.gov/health/educational/lose_wt/BMI/bmicalc.htm -->
-            <td ng-if="patient.bmi < 18.5">Underweight</td>
-            <td ng-if="18.5 <= patient.bmi && patient.bmi <= 24.9">Normal Weight</td>
-            <td ng-if="25.0 <= patient.bmi && patient.bmi <= 29.9">Overweight</td>
-            <td ng-if="30.0 <= patient.bmi">Obese</td>
+            <td ng-if="bmi < 18.5">Underweight</td>
+            <td ng-if="18.5 <= bmi && bmi <= 24.9">Normal Weight</td>
+            <td ng-if="25.0 <= bmi && bmi <= 29.9">Overweight</td>
+            <td ng-if="30.0 <= bmi">Obese</td>
 
 
           </tr>
