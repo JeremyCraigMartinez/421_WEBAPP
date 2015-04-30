@@ -51,143 +51,101 @@
       <!-- Form: Create Account -->
       <div class="form col-md-8 col-md-offset-2">
         <h2 class="form-heading">Create an account</h2>
-        <form role="form" ng-submit="signup(email,pass)" role="form">
+        <form role="form" ng-submit="submitSignup(signup)" role="form">
           <div class="form-group">
             <label for="inputEmail" class="control-label">Email address</label>
-            <input type="email" ng-model="email" id="inputEmail" class="form-control" 
+            <input type="email" ng-model="signup._id" id="inputEmail" class="form-control" 
             placeholder="Enter your email address" required autofocus>
           </div>
 
           <div class="form-group">
             <label for="inputPassword" class="control-label">Password</label>
             <input type="password" id="inputPassword" class="form-control" 
-            placeholder="Enter your password" ng-model="pass" required>
-          </div>
-
-          <!-- Leave out Confirm Password to make testing easier
-                <div class="form-group">
-                <label for="inputPassword" class="control-label">Confirm Password</label>
-                <input type="password" id="inputPassword" class="form-control" placeholder="Confirm your password" ng-model="pass" required>
-                -->
-
-          <div class="form-group">
-            <label for="inputFirstName" class="control-label">First Name</label>
-            <input id="inputFirstName" class="form-control" 
-            ng-model="firstName" placeholder="Enter your first name" required>
+            placeholder="Enter your password" ng-model="signup.pass" required>
           </div>
 
           <div class="form-group">
-            <label for="inputLastName" class="control-label">Last Name</label>
-            <input id="inputLastName" class="form-control" 
-            ng-model="lastName" placeholder="Enter your last name" required>
+            <label for="inputfirst_name" class="control-label">First Name</label>
+            <input id="inputfirst_name" class="form-control" 
+            ng-model="signup.first_name" placeholder="Enter your first name" required>
+          </div>
+
+          <div class="form-group">
+            <label for="inputlast_name" class="control-label">Last Name</label>
+            <input id="inputlast_name" class="form-control" 
+            ng-model="signup.last_name" placeholder="Enter your last name" required>
           </div>
 
           <!-- Determine User Type: Doctor or Patient? -->
+          
           <div class="form-group">
             <label class="radio-inline">
-              <input type="radio" name="userType" value="doctor" ng-model="type"/>Clinician
+              <input type="radio" name="userType" value="doctor" ng-model="signup.type"/>Clinician
             </label>
             <label class="radio-inline">
-              <input type="radio" name="userType" value="patient" ng-model="type"/>Patient
+              <input type="radio" name="userType" value="patient" ng-model="signup.type"/>Patient
             </label>
           </div>
 
           <!-- Doctor Information -->
-          <div id="doctor-info" ng-if="type==='doctor'">
+          <div id="doctor-info" ng-if="signup.type==='doctor'">
             <div class="form-group">
               <label for="Hospital" class="control-label">Hospital</label>
               <input id="Hospital" class="form-control" 
-              ng-model="hospital" placeholder="Enter where you practice medicine" required>
+              ng-model="signup.hospital" placeholder="" required>
             </div>
             <div class="form-group">
               <label for="Specialty" class="control-label">Specialty</label>
               <input id="Specialty" class="form-control" 
-              ng-model="specialty" placeholder="Enter where you practice medicine" required>
+              ng-model="signup.specialty" placeholder="" required>
             </div>
           </div><!-- /Doctor Information -->
 
           <!-- Patient Information -->
-          <div id="patient-info" ng-if="type==='patient'">
+          <div id="patient-info" ng-if="signup.type==='patient'">
             <div class="form-group">
               <label for="inputAge" class="control-label">Age (years)</label>
               <input type="number" min="0" step="1" 
-              id="inputAge" class="form-control" ng-model="age" 
+              id="inputAge" class="form-control" ng-model="signup.age" 
               placeholder="Enter your age in years" required>
             </div>
-            <!-- Birthday 
-                <div class="form-group">
-                    <label for="birthday" class="col-md-2 control-label">Name</label>
-                    <div class="col-md-10">
-                        <div class="form-inline">
-
-                            <div class="form-group">
-                                <input class="form-control" type="text" 
-                                ng-model="first_name" name="first_name" placeholder="First">
-                            </div>
-
-                            <div class="form-group">
-                                <input class="form-control" type="text" 
-                                ng-model="last_name" name="last_name" placeholder="Last">
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-                -->
 
             <div class="form-group">
               <label for="inputHeight" class="control-label">Height (in)</label>
               <input type="number"  min="0" step="1" 
-              id="inputHeight" class="form-control" ng-model="height" 
+              id="inputHeight" class="form-control" ng-model="signup.height" 
               placeholder="Enter your height in inches" required>
             </div>
-            <!-- Height with feet/inches, could get really fancy and have toggle for metric
-                <div class="form-group">
-                    <label for="inputHeight" class="col-md-2 control-label">Height</label>
-                    <div class="col-md-2">
-                        <div class="form-inline" id="inputHeight">
-                            <div class="form-group">
-                                <input id="inputHeight" class="form-control" type="number" ng-model="height" placeholder="Feet" required>
-                            </div>
-                            <div class="form-group">
-                                <input id="inputHeight" class="form-control" type="number" ng-model="height" placeholder="Inches" required>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                -->
 
             <div class="form-group form-inline">
               <label for="inputWeight" class="control-label">Weight (lb)</label>
               <input type="number"  min="0" step="1" 
-              id="inputWeight" class="form-control" ng-model="weight" 
+              id="inputWeight" class="form-control" ng-model="signup.weight" 
               placeholder="Enter your weight in pounds" required>
             </div>
 
-            <!--
-                <div class="form-group">
-                    <label for="inputSex" class="control-label">Sex</label>
-                    <select id="inputSex" class="form-control" ng-model="sex" required>
-                        <option>Male</option>
-                        <option>Female</option>
-                        <option>Intersex</option>
-                    </select>
-                </div>
-                -->
             <div class="form-group" required>
               <label for="inputSex" class="radio-inline">
-                <input type="radio" name="sex" value="male" required/>Male
+                <input type="radio" name="sex" ng-model="signup.sex" value="male" required/>Male
               </label>
               <label for="inputSex" class="radio-inline">
-                <input type="radio" name="sex" value="female" />Female
+                <input type="radio" name="sex" ng-model="signup.sex" value="female" />Female
               </label>
             </div>
 
             <div class="form-group">
               <label for="inputGroup" class="control-label">Group</label>
-              <input id="inputGroup" class="form-control" ng-model="group" 
+              <input id="inputGroup" class="form-control" ng-model="signup.group" 
               placeholder="Enter your study group">
             </div>
+
+            <div class="form-group">
+              <label for="inputDoctor" class="control-label">Doctor</label>
+              <select id="inputDoctor" class="form-control" ng-model="signup.doctor" ng-options="doc.first_name for doc in list_of_doctors">
+                <option value="doctor.first_name">{{doctor.first_name}}</option>
+              </select>
+            </div>
+            
           </div><!-- /Patient Information -->
 
           <div class="form-group">

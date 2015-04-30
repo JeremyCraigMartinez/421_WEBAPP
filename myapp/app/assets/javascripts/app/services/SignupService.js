@@ -2,12 +2,28 @@
 
 angular.module('myapp.services')
 	.service('SignupService', function($http, $q) {
-		this.signup = function(email, pass) {
+		this.add_patient = function(info) {
 			var deferred = $q.defer();
 			$http({
 				method: "POST",
-				url: "http://localhost:5024/user/create",
-				data: {email:email,pass:pass}
+				url: "http://localhost:5024/patients",
+				data: info
+			})
+			.then(function(res) {
+				deferred.resolve(res.data);
+			})
+			.catch(function(error) {
+				console.log('signup error');
+				console.log(error);
+			});
+			return deferred.promise;
+		}
+		this.add_doctor = function(info) {
+			var deferred = $q.defer();
+			$http({
+				method: "POST",
+				url: "http://localhost:5024/doctors",
+				data: info
 			})
 			.then(function(res) {
 				deferred.resolve(res.data);

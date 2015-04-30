@@ -14,4 +14,6 @@
 //= require angular
 //= require angular-route
 //= require angular-cookies
+//= require jquery
+//= require bootstrap-sprockets
 //= require_tree .

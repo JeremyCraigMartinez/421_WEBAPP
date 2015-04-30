@@ -5,11 +5,28 @@
     <div class="main">
       <h1 class="page-header">Overview</h1>
 
-      <p>
-      <button class="btn btn-lg btn-primary" type="button">
-        + Add Group
+      <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+        Add Group
       </button>
-      </p>
+
+      <!-- Modal -->
+      <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title" id="myModalLabel">Enter Group Below</h4>
+            </div>
+            <div class="modal-body">
+              <input ng-model="new_group" type="text" class="form-control" placeholder="Enter group here..."></input>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              <button ng-click="add_group(new_group)" type="button" class="btn btn-primary" data-dismiss="modal">Save group</button>
+            </div>
+          </div>
+        </div>
+      </div>
 
       <div class="row">
         <div class="col-md-6 col-md-offset-1">
@@ -24,12 +41,16 @@
         <table class="table table-striped">
           <thead>
             <tr>
+              <th></th>
               <th>Group</th>
+              <th></th>
             </tr>
           </thead>
           <tbody>
             <tr ng-repeat="group in groups">
+              <td><a href="#" ng-click="remove_group(group)"><span class="glyphicon glyphicon-remove"></span></a></td>
               <td>{{group}}</td>
+              <td><a href="#">Get Patients From This Group</a></td>
             </tr>
           </tbody>
         </table>

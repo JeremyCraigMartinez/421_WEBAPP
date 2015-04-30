@@ -17,7 +17,7 @@ angular.module('myapp.services')
 			var deferred = $q.defer();
 			$http({
 				method: "POST",
-				url: "http://localhost:5024/group",
+				url: "http://localhost:5024/groups",
 				data: {_id:id}
 			})
 			.then(function(res) {
@@ -37,7 +37,7 @@ angular.module('myapp.services')
 			var deferred = $q.defer();
 			$http({
 				method: "POST",
-				url: "http://localhost:5024/group/remove",
+				url: "http://localhost:5024/groups/remove",
 				data: {_id:id}
 			})
 			.then(function(res) {
@@ -45,6 +45,7 @@ angular.module('myapp.services')
 			})
 			.catch(function(error) {
 				if (error.status === 404) {
+					console.log(error);
 					console.log('group: '+id+' does not exist');
 					deferred.reject(error);
 				}
