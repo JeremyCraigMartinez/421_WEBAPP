@@ -6,7 +6,7 @@ angular.module('myapp.services')
 			var deferred = $q.defer();
 			$http({
 				method: "POST",
-				url: "http://localhost:5024/patients",
+				url: "http://localhost:5025/patients",
 				data: info
 			})
 			.then(function(res) {
@@ -22,7 +22,7 @@ angular.module('myapp.services')
 			var deferred = $q.defer();
 			$http({
 				method: "POST",
-				url: "http://localhost:5024/doctors",
+				url: "http://localhost:5025/doctors",
 				data: info
 			})
 			.then(function(res) {
@@ -40,7 +40,7 @@ angular.module('myapp.services')
 				var deferred = $q.defer();
 				$http({
 					method: "POST",
-					url: "http://localhost:5024/user/"+data['email']+"/info",
+					url: "http://localhost:5025/user/"+data['email']+"/info",
 					data: data
 				})
 				.then(function(res) {
