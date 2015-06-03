@@ -2,11 +2,27 @@
 
 angular.module('myapp.services')
 	.service('ProfileService', function($http, $q, $routeParams) {
+		this.add_patient = function(info) {
+			var deferred = $q.defer();
+			$http({
+				method: "POST",
+				url: "https://localhost:5025/patients",
+				data: info
+			})
+			.then(function(res) {
+				deferred.resolve(res.data);
+			})
+			.catch(function(error) {
+				console.log('patient signup error');
+				console.log(error);
+			});
+			return deferred.promise;
+		}
 		this.patient_info = function(id) {
 			var deferred = $q.defer();
 			$http({
 				method: "GET",
-				url: "http://localhost:5025/patients/"+id,
+				url: "https://localhost:5025/patients/"+id,
 			})
 			.then(function(res) {
 				deferred.resolve(res.data);

@@ -2,3 +2,5 @@
 
 start.sh
 update_server.sh
+
+node_modules

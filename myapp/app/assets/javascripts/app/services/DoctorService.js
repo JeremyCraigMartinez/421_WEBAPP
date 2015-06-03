@@ -1,12 +1,12 @@
 'use strict';
 
 angular.module('myapp.services')
-	.service('DoctorService', function($http, $q, $routeParams) {
+	.service('DoctorService', function($http, $q, $routeParams, LoginService) {
 		this.doctors = function(id) {
 			var deferred = $q.defer();
 			$http({
 				method: "GET",
-				url: "http://localhost:5025/doctors",
+				url: "https://localhost:5025/doctors",
 			})
 			.then(function(res) {
 				deferred.resolve(res.data);
@@ -21,11 +21,30 @@ angular.module('myapp.services')
 			});
 			return deferred.promise;
 		}
+		this.add_doctor = function(info) {
+			var deferred = $q.defer();
+
+			$http({
+				method: "POST",
+				url: "https://localhost:5025/doctors",
+				data: info
+			})
+			.then(function(res) {
+				LoginService.login(info.email, info.password).then(function (user) {
+					deferred.resolve(res.data);
+				});
+			})
+			.catch(function(error) {
+				console.log('doctor signup error');
+				console.log(error);
+			});
+			return deferred.promise;
+		}
 		this.doctor_info = function(id) {
 			var deferred = $q.defer();
 			$http({
 				method: "GET",
-				url: "http://localhost:5025/doctors/"+id,
+				url: "https://localhost:5025/doctors/"+id,
 			})
 			.then(function(res) {
 				deferred.resolve(res.data);

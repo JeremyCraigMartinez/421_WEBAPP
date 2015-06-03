@@ -54,7 +54,7 @@
         <form role="form" ng-submit="submitSignup(signup)" role="form">
           <div class="form-group">
             <label for="inputEmail" class="control-label">Email address</label>
-            <input type="email" ng-model="signup._id" id="inputEmail" class="form-control" 
+            <input type="email" ng-model="signup.email" id="inputEmail" class="form-control" 
             placeholder="Enter your email address" required autofocus>
           </div>
 
@@ -141,8 +141,8 @@
 
             <div class="form-group">
               <label for="inputDoctor" class="control-label">Doctor</label>
-              <select id="inputDoctor" class="form-control" ng-model="signup.doctor" ng-options="doc.first_name for doc in list_of_doctors">
-                <option value="doctor.first_name">{{doctor.first_name}}</option>
+              <select id="inputDoctor" class="form-control" ng-model="signup.doctor" ng-options="doc.full_name for doc in list_of_doctors">
+                <option value="doctor.email"></option>
               </select>
             </div>
             

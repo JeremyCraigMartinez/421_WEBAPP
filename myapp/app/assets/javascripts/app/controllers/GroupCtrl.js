@@ -4,7 +4,7 @@
 
 angular.module('myapp.controllers')
   .controller('GroupController',
-    function($scope, GroupService, $q) {
+    function($scope, GroupService, $q, LoginService) {
       $scope.Math = window.Math;
       GroupService.groups().then(function(groups) {
         $scope.groups = [];
@@ -12,17 +12,23 @@ angular.module('myapp.controllers')
           $scope.groups.push(groups[group]._id);
         }
       });
-    $scope.add_group = function (id) {
-      GroupService.add_group(id).then(function (res) {
-        $scope.groups.push(id);
+      LoginService.currentUser().then(function (o) {
+        console.log(o);
       });
-    }
-    $scope.remove_group = function (id) {
-      if (confirm("Are you sure you want to delete "+id+" as a group?")) {
-        GroupService.remove_group(id).then(function (res) {
-          console.log("remove_group");
-          $scope.groups.splice($scope.groups.indexOf(id),1);
+      LoginService.currentPass().then(function (o) {
+        console.log(o);
+      });
+      $scope.add_group = function (id) {
+        GroupService.add_group(id).then(function (res) {
+          $scope.groups.push(id);
         });
       }
-    }
+      $scope.remove_group = function (id) {
+        if (confirm("Are you sure you want to delete "+id+" as a group?")) {
+          GroupService.remove_group(id).then(function (res) {
+            console.log("remove_group");
+            $scope.groups.splice($scope.groups.indexOf(id),1);
+          });
+        }
+      }
   });
