@@ -78,10 +78,10 @@
 
           <tr ng-repeat="patient in patients track by $index">
 
-            <td><a href="/user/{{patient._id}}">{{patient._id}}</a></td>
+            <td><a href="/user/{{patient.email}}">{{patient.email}}</a></td>
             <td><p ng-repeat="each_group in patient.group"><a href="#">{{each_group}}</a></p></td>
-            <td><a href="/user/{{patient._id}}">{{patient.first_name}}</a></td>
-            <td><a href="/user/{{patient._id}}">{{patient.last_name}}</a></td>
+            <td><a href="/user/{{patient.email}}">{{patient.first_name}}</a></td>
+            <td><a href="/user/{{patient.email}}">{{patient.last_name}}</a></td>
             <td>{{patient.sex}}</td>
             <td>{{patient.age}}</td>
             <td>{{patient.height}}</td>

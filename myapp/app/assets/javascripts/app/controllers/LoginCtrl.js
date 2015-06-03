@@ -2,9 +2,15 @@
 
 angular.module('myapp.controllers')
 	.controller('LoginController', 
-		function($scope, $location, $q, LoginService, SignupService, DoctorService) {
+		function($scope, $location, $q, LoginService, DoctorService, Base64, ProfileService) {
 			$scope.signup = {};
 			$scope.login = {};
+
+			var str, enc
+			str = "hello snerld";
+			enc = Base64.encode(str);
+			console.log('str: '+str);
+			console.log('enc: '+enc);
 
 			DoctorService.doctors().then(function (doctors) {
 				var all = [];
@@ -12,30 +18,27 @@ angular.module('myapp.controllers')
 					all.push(DoctorService.doctor_info(doctors[doctor]));
 				}
 				$q.all(all).then(function (doctors_info) {
-					$scope.list_of_doctors = doctors_info;
-					$scope.doctor_reference = {};
 					for (var doctor in doctors_info) {
-						$scope.doctor_reference[doctors_info[doctor].first_name] = doctors_info[doctor]._id;
+						doctors_info[doctor].full_name = doctors_info[doctor].first_name + " " + doctors_info[doctor].last_name
 					}
+					$scope.list_of_doctors = doctors_info;
 				});
 			});
 
-			LoginService.currentUser().then(function(user) {
+			LoginService.currentUser().then(function (user) {
 				$scope.user = user;
 			});
 
-			$scope.submitSignup = function(signup) {
+			$scope.submitSignup = function (signup) {
 				if (signup.type === "doctor") {
-					SignupService.add_doctor(signup).then(function(user) {
-						console.log(user);
+					DoctorService.add_doctor(signup).then(function (data, user) {
 						$scope.user = user;
 						$location.path('/users');
 					});
 				}
 				else if (signup.type === "patient") {
-					signup["doctor"] = $scope.doctor_reference[signup.doctor.first_name];
-					SignupService.add_patient(signup).then(function(user) {
-						console.log(user);
+					signup["doctor"] = signup.doctor.email
+					ProfileService.add_patient(signup).then(function (user) {
 						$scope.user = user;
 						$location.path('/users');
 					});
@@ -43,9 +46,15 @@ angular.module('myapp.controllers')
 			}
 
 			$scope.submitLogin = function() {
-				LoginService.login($scope.login.email).then(function(user) {
-					$scope.user = user;
-					$location.path('/users');
+				LoginService.login($scope.login.email, $scope.login.password).then(function (user) {
+					console.log(user===false);
+					if (user===false) {
+						$location.path('/login');
+					}
+					else {
+						$scope.user = user;
+						$location.path('/users');
+					}
 				});
 			}
 		});
