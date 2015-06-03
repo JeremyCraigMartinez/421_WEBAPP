@@ -1,0 +1,31 @@
+{
+  "name": "421_WEBAPP",
+  "version": "0.1.0",
+  "description": "wearable sensors web application",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/JeremyCraigMartinez/421_WEBAPP.git"
+  },
+  "author": "jeremy martinez & james jessen",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JeremyCraigMartinez/421_WEBAPP/issues"
+  },
+  "homepage": "https://github.com/JeremyCraigMartinez/421_WEBAPP",
+  "dependencies": {
+    "karma-cli": "0.0.4"
+  },
+  "devDependencies": {
+    "chai": "^2.3.0",
+    "karma": "^0.12.35",
+    "karma-chai": "^0.1.0",
+    "karma-mocha": "^0.1.10",
+    "karma-phantomjs-launcher": "^0.2.0",
+    "mocha": "^2.2.5",
+    "phantomjs": "^1.9.17"
+  }
+}
