@@ -1,9 +1,21 @@
-<div class="col-md-5 col-lg-5 col-sm-5">
+<!-- Welcome title and description -->
+<div class="container">
+  <div class="row">
+    <div class="jumbotron">
+      <h1>Profile of {{first_name}} {{last_name}}</h1>
+    </div>
+  </div><!-- /row -->
+	<table class="table table-striped">
+		<thead>
+			<th>field</th>
+			<th>data</th>
+		</thead>
+		<tr ng-repeat="(key,info) in patient_info">
+			<td>{{key}}</td><td>{{info}}</td>
+		</tr>
+	</table>
+	<a href="/patients/{{patient_info.email}}/activity">Recent Activity</a>
+	<br>
+	<a href="/patients/{{patient_info.email}}/diet">Recent Diet</a>
 </div>
-<div class="col-md-7 col-lg-7 col-sm-7">
-	<div ng-repeat="info in patient_info">
-		{{info}}
-	</div>
 
-	<a href="#">get data for user</a>
-</div>

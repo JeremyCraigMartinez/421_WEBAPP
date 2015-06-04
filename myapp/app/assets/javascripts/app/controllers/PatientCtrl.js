@@ -3,13 +3,13 @@
 'use strict';
 
 angular.module('myapp.controllers')
-  .controller('UsersController',
-    function($scope, UsersService, $q) {
+  .controller('PatientController',
+    function($scope, PatientService, $q) {
       $scope.Math = window.Math;
-      UsersService.patients().then(function(patients) {
+      PatientService.patients().then(function(patients) {
         $scope.patients = [];
         for (var patient in patients) {
-          UsersService.patient_info(patients[patient]).then(function(info) {
+          PatientService.patient_info(patients[patient]).then(function(info) {
             if (info)
               $scope.patients.push(info);
           });

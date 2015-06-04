@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('myapp.services')
-	.service('UsersService', function($http, $q) {
+	.service('PatientService', function($http, $q) {
 		this.patients = function() {
 			var deferred = $q.defer();
 			$http({

@@ -31,4 +31,8 @@ angular.module('myapp.controllers')
           });
         }
       }
+      $scope.firstContainsSecond = function (str, substr) {
+        return str.includes(substr);
+      }
+      $scope.search = "";
   });

@@ -49,6 +49,7 @@ angular.module('myapp.controllers')
 				LoginService.login($scope.login.email, $scope.login.password).then(function (user) {
 					console.log(user===false);
 					if (user===false) {
+						$scope.failedLogin=true;
 						$location.path('/login');
 					}
 					else {

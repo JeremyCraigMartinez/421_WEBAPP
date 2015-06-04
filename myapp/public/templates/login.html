@@ -17,7 +17,7 @@
     <div class="left-col-split col-md-6">
       <!-- Form: Sign in --> 
       <div class="form col-md-8 col-md-offset-2">
-        <h2 class="form-heading">Sign in</h2>
+        <h2 class="form-heading">Sign in <span ng-if="failedLogin===true" style="color:red; font-size:medium;">incorrect login</span></h2>
         <form role="form" ng-submit="submitLogin()" role="form">
           <div class="form-group">
             <label for="login.email" class="control-label">Email</label>
