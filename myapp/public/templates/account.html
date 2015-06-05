@@ -1,10 +1,119 @@
 <!-- Welcome title and description -->
 <div class="container">
   <div class="row">
-    <div class="jumbotron">
+    <div class="col-md-4 col-sm-4 col-lg-4">
+    	<img style="width:85%; height:85%;" src="http://blogdailyherald.com/wp-content/uploads/2014/10/wallpaper-for-facebook-profile-photo-1024x645.jpg">
+    </div>
+    <div class="jumbotron col-md-8 col-sm-8 col-lg-8">
       <h1>Account</h1>
-      <p>Don't change your account!</p>
-      <div>{{account_info}}</div>
     </div>
   </div><!-- /row -->
-</div><!-- /container -->
+	<table class="table table-striped">
+		<thead>
+			<th width="20%">field</th>
+			<th>data</th>
+			<th width="20%"></th>
+		</thead>
+		<!-- row -->
+		<tr>
+			<td>
+				First Name
+			</td>
+			<td>
+				<div ng-hide="change__first_name">
+					{{account_info.first_name}}
+				</div>
+				<div ng-show="change__first_name" class="input-group" style="width:50%;">
+					<input class="form-control" type="text" placeholder="New first name...">
+					<span class="input-group-btn">
+						<button type="button" class="btn btn-primary">Submit</button>
+					</span>
+				</div>
+			</td>
+			<td width="20%">
+				<a ng-model="change__first_name" ng-click="changeState('change__first_name')" href="#">change me</a>
+			</td>
+		</tr>
+		<!-- row -->
+		<tr>
+			<td>
+				Last Name
+			</td>
+			<td>
+				<div ng-hide="change__last_name">
+					{{account_info.first_name}}
+				</div>
+				<div ng-show="change__last_name" class="input-group" style="width:50%;">
+					<input class="form-control" type="text" placeholder="New first name...">
+					<span class="input-group-btn">
+						<button type="button" class="btn btn-primary">Submit</button>
+					</span>
+				</div>
+			</td>
+			<td width="20%">
+				<a ng-model="change__last_name" ng-click="changeState('change__last_name')" href="#">change me</a>
+			</td>
+		</tr>
+		<!-- row -->
+		<tr>
+			<td>
+				Email
+			</td>
+			<td>
+				<div ng-hide="change__email">
+					{{account_info.first_name}}
+				</div>
+				<div ng-show="change__email" class="input-group" style="width:50%;">
+					<input class="form-control" type="text" placeholder="New first name...">
+					<span class="input-group-btn">
+						<button type="button" class="btn btn-primary">Submit</button>
+					</span>
+				</div>
+			</td>
+			<td width="20%">
+				<a ng-model="change__email" ng-click="changeState('change__email')" href="#">change me</a>
+			</td>
+		</tr>
+		<!-- row -->
+		<tr>
+			<td>
+				Hospital
+			</td>
+			<td>
+				<div ng-hide="change__hospital">
+					{{account_info.first_name}}
+				</div>
+				<div ng-show="change__hospital" class="input-group" style="width:50%;">
+					<input class="form-control" type="text" placeholder="New first name...">
+					<span class="input-group-btn">
+						<button type="button" class="btn btn-primary">Submit</button>
+					</span>
+				</div>
+			</td>
+			<td width="20%">
+				<a ng-model="change__hospital" ng-click="changeState('change__hospital')" href="#">change me</a>
+			</td>
+		</tr>
+		<!-- row -->
+		<tr>
+			<td>
+				Specialy
+			</td>
+			<td>
+				<div ng-hide="change__specialty">
+					{{account_info.first_name}}
+				</div>
+				<div ng-show="change__specialty" class="input-group" style="width:50%;">
+					<input class="form-control" type="text" placeholder="New first name...">
+					<span class="input-group-btn">
+						<button type="button" class="btn btn-primary">Submit</button>
+					</span>
+				</div>
+			</td>
+			<td width="20%">
+				<a ng-model="change__specialty" ng-click="changeState('change__specialty')" href="#">change me</a>
+			</td>
+		</tr>
+	</table>
+	<br>
+</div>

@@ -13,10 +13,10 @@ angular.module('myapp.controllers')
         }
       });
       LoginService.currentUser().then(function (o) {
-        console.log(o);
+        
       });
       LoginService.currentPass().then(function (o) {
-        console.log(o);
+        
       });
       $scope.add_group = function (id) {
         GroupService.add_group(id).then(function (res) {

@@ -1,7 +1,10 @@
 <!-- Welcome title and description -->
 <div class="container">
   <div class="row">
-    <div class="jumbotron">
+    <div class="col-md-4 col-sm-4 col-lg-4">
+    	<img style="width:85%; height:85%;" src="http://blogdailyherald.com/wp-content/uploads/2014/10/wallpaper-for-facebook-profile-photo-1024x645.jpg">
+    </div>
+    <div class="jumbotron col-md-8 col-sm-8 col-lg-8">
       <h1>Profile of {{first_name}} {{last_name}}</h1>
     </div>
   </div><!-- /row -->
@@ -14,8 +17,19 @@
 			<td>{{key}}</td><td>{{info}}</td>
 		</tr>
 	</table>
-	<a href="/patients/{{patient_info.email}}/activity">Recent Activity</a>
+	<div>
+		<a href="/user/{{patient_info.email}}/activity" style="text-decoration:none;">
+			<button class="btn btn-primary" type="button">
+				Recent Activity <span class="glyphicon glyphicon-heart"></span>
+			</button>
+		</a>
+		&nbsp;
+		<a href="/user/{{patient_info.email}}/diet" style="text-decoration:none;">
+			<button class="btn btn-success" type="button">
+				Recent Diet <span class="glyphicon glyphicon-cutlery" style="font-style:normal;"></span>
+			</button>
+		</a>
+	</div>
 	<br>
-	<a href="/patients/{{patient_info.email}}/diet">Recent Diet</a>
 </div>
 
