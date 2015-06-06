@@ -14,69 +14,79 @@
             <tr>
               <th>
                 <a href="" 
-                  ng-click="orderByField='id'; reverseSort = !reverseSort">
+                  ng-click="order('email')">
                   ID
                 </a>
+                <span class="sortorder" ng-show="predicate==='email'" ng-class="{reverse:reverse}"></span>
               </th>
               <th ng-hide>
                 <a href="" 
-                  ng-click="orderByField='group'; reverseSort = !reverseSort">
+                  ng-click="order('group')">
                   Group
                 </a>
+                <span class="sortorder" ng-show="predicate==='group'" ng-class="{reverse:reverse}"></span>
               </th>
               <th>
                 <a href="" 
-                  ng-click="orderByField='first_name'; reverseSort = !reverseSort">
+                  ng-click="order('first_name')">
                   First Name
                 </a>
+                <span class="sortorder" ng-show="predicate==='first_name'" ng-class="{reverse:reverse}"></span>
               </th>
               <th>
                 <a href="" 
-                  ng-click="orderByField='last_name'; reverseSort = !reverseSort">
+                  ng-click="order('last_name')">
                   Last Name
                 </a>
+                <span class="sortorder" ng-show="predicate==='last_name'" ng-class="{reverse:reverse}"></span>
               </th>
               <th>
                 <a href="" 
-                  ng-click="orderByField='sex'; reverseSort = !reverseSort">
+                  ng-click="order('sex')">
                   Sex 
                 </a>
+                <span class="sortorder" ng-show="predicate==='sex'" ng-class="{reverse:reverse}"></span>
               </th>
               <th>
                 <a href="" 
-                  ng-click="orderByField='age'; reverseSort = !reverseSort">
+                  ng-click="order('age')">
                   Age
                 </a>
+                <span class="sortorder" ng-show="predicate==='age'" ng-class="{reverse:reverse}"></span>
               </th>
               <th>
                 <a href="" 
-                  ng-click="orderByField='height'; reverseSort = !reverseSort">
+                  ng-click="order('height')">
                   Height (in)
                 </a>
+                <span class="sortorder" ng-show="predicate==='height'" ng-class="{reverse:reverse}"></span>
               </th>
               <th>
                 <a href="" 
-                  ng-click="orderByField='weight'; reverseSort = !reverseSort">
+                  ng-click="order('weight')">
                   Weight (lb)
                 </a>
+                <span class="sortorder" ng-show="predicate==='weight'" ng-class="{reverse:reverse}"></span>
               </th>
               <th>
                 <a href="" 
-                  ng-click="orderByField='bmi'; reverseSort = !reverseSort">
+                  ng-click="order('bmi')">
                   BMI Score
                 </a>
+                <span class="sortorder" ng-show="predicate==='bmi'" ng-class="{reverse:reverse}"></span>
               </th>
               <th>
                 <a href="" 
-                  ng-click="orderByField='bmi'; reverseSort = !reverseSort">
+                  ng-click="order('bmi')">
                   BMI Category 
                 </a>
+                <span class="sortorder" ng-show="predicate==='bmi'" ng-class="{reverse:reverse}"></span>
               </th>
             </tr>
           </thead>
           <tbody>
 
-          <tr ng-repeat="patient in patients track by $index">
+          <tr ng-repeat="patient in patients | orderBy:predicate:reverse">
 
             <td><a href="/user/{{patient.email}}">{{patient.email}}</a></td>
             <td><p ng-repeat="each_group in patient.group"><a href="#">{{each_group}}</a></p></td>
