@@ -2,15 +2,9 @@
 
 angular.module('myapp.controllers')
 	.controller('LoginController', 
-		function($scope, $location, $q, LoginService, DoctorService, Base64, ProfileService) {
+		function($scope, $location, $q, GroupService, LoginService, DoctorService, Base64, ProfileService) {
 			$scope.signup = {};
 			$scope.login = {};
-
-			var str, enc
-			str = "hello snerld";
-			enc = Base64.encode(str);
-			console.log('str: '+str);
-			console.log('enc: '+enc);
 
 			DoctorService.doctors().then(function (doctors) {
 				var all = [];
@@ -29,25 +23,64 @@ angular.module('myapp.controllers')
 				$scope.user = user;
 			});
 
+			GroupService.groups().then(function(groups) {
+				$scope.groups = [];
+				for (var group in groups) {
+					$scope.groups.push(groups[group]._id);
+				}
+			});
+
+			$scope.remove_group = function (group) {
+				$scope.signup.group = null;
+				$scope.groups.push(group);
+				$scope.selected_groups.splice($scope.selected_groups.indexOf(group),1);
+			}
+
+			$scope.selected_groups = [];
+			$scope.setGroup = function(group){
+				$scope.groups.splice($scope.groups.indexOf(group),1);
+				$scope.selected_groups.push(group);
+			};
+
 			$scope.submitSignup = function (signup) {
 				if (signup.type === "doctor") {
 					DoctorService.add_doctor(signup).then(function (data, user) {
-						$scope.user = user;
-						$location.path('/users');
+						console.log(signup.email);
+						console.log(signup.pass);
+						LoginService.login(signup.email, signup.pass).then(function (user) {
+							if (user===false) {
+								$scope.failedLogin=true;
+								$location.path('/login');
+							}
+							else {
+								$scope.user = user;
+								$location.path('/users');
+							}
+						});
 					});
 				}
 				else if (signup.type === "patient") {
 					signup["doctor"] = signup.doctor.email
+					signup.group = $scope.selected_groups;
 					ProfileService.add_patient(signup).then(function (user) {
-						$scope.user = user;
-						$location.path('/users');
+						console.log(signup.email);
+						console.log(signup.pass);
+						LoginService.login(signup.email, signup.pass).then(function (user) {
+							if (user===false) {
+								$scope.failedLogin=true;
+								$location.path('/login');
+							}
+							else {
+								$scope.user = user;
+								$location.path('/users');
+							}
+						});
 					});
 				}
 			}
 
 			$scope.submitLogin = function() {
 				LoginService.login($scope.login.email, $scope.login.password).then(function (user) {
-					console.log(user===false);
 					if (user===false) {
 						$scope.failedLogin=true;
 						$location.path('/login');
@@ -58,4 +91,5 @@ angular.module('myapp.controllers')
 					}
 				});
 			}
+
 		});

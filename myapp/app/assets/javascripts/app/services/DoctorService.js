@@ -59,4 +59,23 @@ angular.module('myapp.services')
 			});
 			return deferred.promise;
 		}
+		this.remove_doctor = function(id) {
+			var deferred = $q.defer();
+			$http({
+				method: "DELETE",
+				url: "https://localhost:5025/doctors/remove",
+			})
+			.then(function(res) {
+				deferred.resolve(res.data);
+			})
+			.catch(function(error) {
+				if (error.status === 404) {
+					console.log('unable to remove doctor: '+id);
+					deferred.reject(error);
+				}
+				else 
+					console.log(error);
+			});
+			return deferred.promise;
+		}
 	});

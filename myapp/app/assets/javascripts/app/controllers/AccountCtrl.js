@@ -39,4 +39,13 @@ angular.module('myapp.controllers')
       	// set $scope.change__all back to original value
       	change__all.push(changeMe);
       }
+
+      $scope.deleteAccount = function() {
+        console.log('here');
+        DoctorService.remove_doctor(function (removed_doctor) {
+          LoginService.logout().then(function () {
+            $scope.currentUser = null;
+          });
+        });
+      }      
   });
