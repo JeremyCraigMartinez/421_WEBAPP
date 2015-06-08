@@ -6,7 +6,7 @@ angular.module('myapp.services')
 			var deferred = $q.defer();
 			$http({
 				method: "GET",
-				url: "https://localhost:5025/groups",
+				url: "https://104.236.169.12:5025/groups",
 			}).
 			then(function(res) {
 				deferred.resolve(res.data);
@@ -17,7 +17,7 @@ angular.module('myapp.services')
 			var deferred = $q.defer();
 			$http({
 				method: "POST",
-				url: "https://localhost:5025/groups",
+				url: "https://104.236.169.12:5025/groups",
 				data: {_id:id}
 			})
 			.then(function(res) {
@@ -37,7 +37,7 @@ angular.module('myapp.services')
 			var deferred = $q.defer();
 			$http({
 				method: "POST",
-				url: "https://localhost:5025/groups/remove",
+				url: "https://104.236.169.12:5025/groups/remove",
 				data: {_id:id}
 			})
 			.then(function(res) {

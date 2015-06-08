@@ -11,7 +11,7 @@ angular.module('myapp.services')
 
 				$http({
 					method: "POST",
-					url: "https://localhost:5025/auth",
+					url: "https://104.236.169.12:5025/auth",
 					data: {email:email,password:password}
 				})
 				.then(function (res) {
