@@ -4,7 +4,7 @@
 
 angular.module('myapp.controllers')
   .controller('GroupController',
-    function($scope, GroupService, $q, LoginService) {
+    function($scope, GroupService, $q, LoginService, $location, $rootScope) {
       $scope.Math = window.Math;
       GroupService.groups().then(function(groups) {
         $scope.groups = [];
@@ -12,12 +12,7 @@ angular.module('myapp.controllers')
           $scope.groups.push(groups[group]._id);
         }
       });
-      LoginService.currentUser().then(function (o) {
-        
-      });
-      LoginService.currentPass().then(function (o) {
-        
-      });
+
       $scope.add_group = function (id) {
         GroupService.add_group(id).then(function (res) {
           $scope.groups.push(id);
@@ -32,7 +27,13 @@ angular.module('myapp.controllers')
         }
       }
       $scope.firstContainsSecond = function (str, substr) {
+        console.log(str);
         return str.includes(substr);
       }
       $scope.search = "";
+
+      $scope.searchPatientsInGroup = function (group) {
+        $rootScope.globals.search = group;
+        $location.path('/users');
+      }
   });

@@ -50,7 +50,7 @@
             <tr ng-repeat="group in groups" ng-show="firstContainsSecond(group,search)">
                 <td><a href="#" ng-click="remove_group(group)"><span class="glyphicon glyphicon-remove"></span></a></td>
                 <td>{{group}}</td>
-                <td><a href="/users" ng-click=>Get Patients From This Group</a></td>
+                <td><a href="#" ng-click="searchPatientsInGroup(group)" >Get Patients From This Group</a></td>
             </tr>
           </tbody>
         </table>
