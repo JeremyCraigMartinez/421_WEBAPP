@@ -6,7 +6,7 @@ angular.module('myapp.services')
 			var deferred = $q.defer();
 			$http({
 				method: "GET",
-				url: "https://localhost:5025/doctors",
+				url: "https://dev.api.wsuhealth.wsu.edu:5025/doctors",
 			})
 			.then(function(res) {
 				deferred.resolve(res.data);
@@ -26,7 +26,7 @@ angular.module('myapp.services')
 
 			$http({
 				method: "POST",
-				url: "https://localhost:5025/doctors",
+				url: "https://dev.api.wsuhealth.wsu.edu:5025/doctors",
 				data: info
 			})
 			.then(function(res) {
@@ -44,7 +44,7 @@ angular.module('myapp.services')
 			var deferred = $q.defer();
 			$http({
 				method: "GET",
-				url: "https://localhost:5025/doctors/"+id,
+				url: "https://dev.api.wsuhealth.wsu.edu:5025/doctors/"+id,
 			})
 			.then(function(res) {
 				deferred.resolve(res.data);
@@ -63,7 +63,7 @@ angular.module('myapp.services')
 			var deferred = $q.defer();
 			$http({
 				method: "DELETE",
-				url: "https://localhost:5025/doctors/remove",
+				url: "https://dev.api.wsuhealth.wsu.edu:5025/doctors/remove",
 			})
 			.then(function(res) {
 				deferred.resolve(res.data);
