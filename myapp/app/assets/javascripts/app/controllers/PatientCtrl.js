@@ -46,5 +46,5 @@ angular.module('myapp.controllers')
       }
 
       console.log($scope.currentUser);
-      console.log($rootScope.currentUser);
+      console.log($rootScope.globals.currentUser);
   });
