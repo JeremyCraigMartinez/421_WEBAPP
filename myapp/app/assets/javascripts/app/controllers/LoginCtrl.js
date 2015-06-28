@@ -54,7 +54,7 @@ angular.module('myapp.controllers')
 							}
 							else {
 								$scope.user = user;
-								$location.path('/users');
+								$location.path('/patient_home');
 							}
 						});
 					});
@@ -87,7 +87,9 @@ angular.module('myapp.controllers')
 					}
 					else {
 						$scope.user = user;
-						$location.path('/users');
+						if ($scope.userType === "doctor") $location.path('/users');
+						else if ($scope.userType === "admin") $location.path('/admin');
+						else if ($scope.userType === "patient") $location.path('/patient_home');
 					}
 				});
 			}

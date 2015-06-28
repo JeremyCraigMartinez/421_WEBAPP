@@ -28,21 +28,22 @@ angular.module('myapp.services')
 				return deferred.promise;
 			}
 
-			var set_credentials = function (email, password, type) {
+			var set_credentials = function (email, password, userType) {
 				var user = {
 					email: email,
 					id: 1
 				}
 				service._user = user;
 				$cookieStore.put('user', user);
+				$cookieStore.put('userType', userType);
 				$rootScope.$broadcast("user:set", user);
+				$rootScope.$broadcast("userType:set", userType);
 				
 				var authdata = Base64.encode(email+':'+password)
 				$rootScope.globals = {
 					currentUser: {
 						username: email,
-						authdata: authdata,
-						type: type
+						authdata: authdata
 					}
 				}
 				$http.defaults.headers.common['Authorization'] = 'Basic '+authdata;

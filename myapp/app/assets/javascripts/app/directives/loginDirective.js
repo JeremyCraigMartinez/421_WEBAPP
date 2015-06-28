@@ -15,6 +15,10 @@ angular.module('myapp.directives')
 					$scope.currentUser = currentUser;
 				});
 
+				$scope.$on("userType:set", function(evt, userType) {
+					$scope.userType = userType;
+				});
+
 				$scope.logout = function() {
 					LoginService.logout().then(function() {
 						$scope.currentUser = null;

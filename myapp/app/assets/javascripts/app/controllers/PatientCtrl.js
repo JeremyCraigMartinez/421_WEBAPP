@@ -44,7 +44,4 @@ angular.module('myapp.controllers')
         }
         return false;
       }
-
-      console.log($scope.currentUser);
-      console.log($rootScope.globals.currentUser);
   });
