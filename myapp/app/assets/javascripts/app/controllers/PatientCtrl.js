@@ -45,6 +45,6 @@ angular.module('myapp.controllers')
         return false;
       }
 
-      alert($scope.currentUser);
-      alert($rootScope.currentUser);
+      console.log($scope.currentUser);
+      console.log($rootScope.currentUser);
   });
