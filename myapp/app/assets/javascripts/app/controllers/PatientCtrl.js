@@ -44,4 +44,7 @@ angular.module('myapp.controllers')
         }
         return false;
       }
+
+      alert($scope.currentUser);
+      alert($rootScope.currentUser);
   });
