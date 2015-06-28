@@ -19,8 +19,10 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" ng-if="currentUser" href="/users">Users</a>
-      <a class="navbar-brand" ng-if="currentUser" href="/groups">Groups</a>
+      <a class="navbar-brand" ng-if="currentUser.type==doctor" href="/users">Users</a>
+      <a class="navbar-brand" ng-if="currentUser.type==doctor || currentUser.type==admin" href="/groups">Groups</a>
+      <a class="navbar-brand" ng-if="currentUser.type==admin" href="/groups">Admin</a>
+      <a class="navbar-brand" ng-if="currentUser.type==patient" href="/groups">Home</a>
     </div>
     <div user-panel class="login-directive" style="float:right;padding-top: 10px;"></div>
   </div>

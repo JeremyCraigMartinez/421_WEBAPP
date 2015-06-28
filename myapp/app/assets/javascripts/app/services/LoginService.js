@@ -15,7 +15,7 @@ angular.module('myapp.services')
 					data: {email:email,password:password}
 				})
 				.then(function (res) {
-					set_credentials(email, password, this);
+					set_credentials(email, password, res.data.type);
 					console.log(res.data);
 					deferred.resolve(res.data);
 				})
@@ -28,7 +28,7 @@ angular.module('myapp.services')
 				return deferred.promise;
 			}
 
-			var set_credentials = function (email, password) {
+			var set_credentials = function (email, password, type) {
 				var user = {
 					email: email,
 					id: 1
@@ -41,7 +41,8 @@ angular.module('myapp.services')
 				$rootScope.globals = {
 					currentUser: {
 						username: email,
-						authdata: authdata
+						authdata: authdata,
+						type: type
 					}
 				}
 				$http.defaults.headers.common['Authorization'] = 'Basic '+authdata;

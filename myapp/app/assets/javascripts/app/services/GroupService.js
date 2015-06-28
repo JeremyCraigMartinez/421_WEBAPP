@@ -54,6 +54,11 @@ angular.module('myapp.services')
 					console.log('group: '+id+' does not exist');
 					deferred.reject(error);
 				}
+				else if (error.status === 401) {
+					console.log(error);
+					alert("A request to delete this group has been sent");
+					deferred.reject(error);
+				}
 				else 
 					console.log(error);
 			});
