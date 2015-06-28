@@ -28,6 +28,11 @@ angular.module('myapp.services')
 					console.log(error);
 					deferred.reject(error);
 				}
+				else if (error.status === 401) {
+					console.log(error);
+					alert("A request to add this group has been sent");
+					deferred.reject(error);
+				}
 				else 
 					console.log(error);
 			});
