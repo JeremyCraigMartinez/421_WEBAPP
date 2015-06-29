@@ -9,7 +9,7 @@ angular.module('myapp.controllers')
 			DoctorService.doctors().then(function (doctors) {
 				var all = [];
 				for (var doctor in doctors) {
-					all.push(DoctorService.doctor_info(doctors[doctor]));
+					all.push(DoctorService.info(doctors[doctor]));
 				}
 				$q.all(all).then(function (doctors_info) {
 					for (var doctor in doctors_info) {

@@ -32,6 +32,25 @@ angular.module('myapp.services')
 			});
 			return deferred.promise;
 		}
+		this.patient_info = function(id) {
+			var deferred = $q.defer();
+			$http({
+				method: "GET",
+				url: "https://dev.api.wsuhealth.wsu.edu:5025/patients/"+id,
+			})
+			.then(function(res) {
+				deferred.resolve(res.data);
+			})
+			.catch(function(error) {
+				if (error.status === 404) {
+					console.log('patients: '+id+' has no info');
+					deferred.reject(error);
+				}
+				else 
+					console.log(error);
+			});
+			return deferred.promise;
+		}
 		this.remove = function(id) {
 			var deferred = $q.defer();
 			$http({
