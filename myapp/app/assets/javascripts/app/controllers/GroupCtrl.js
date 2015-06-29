@@ -34,6 +34,6 @@ angular.module('myapp.controllers')
 
       $scope.searchPatientsInGroup = function (group) {
         $rootScope.globals.search = group;
-        $location.path('/users');
+        $location.path('/patients');
       }
   });

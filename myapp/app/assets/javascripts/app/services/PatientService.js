@@ -13,11 +13,11 @@ angular.module('myapp.services')
 			});
 			return deferred.promise;
 		}
-		this.patient_info = function(id) {
+		this.info = function(id) {
 			var deferred = $q.defer();
 			$http({
 				method: "GET",
-				url: "https://dev.api.wsuhealth.wsu.edu:5025/patients/"+id,
+				url: "https://dev.api.wsuhealth.wsu.edu:5025/patients",
 			})
 			.then(function(res) {
 				deferred.resolve(res.data);
@@ -25,6 +25,25 @@ angular.module('myapp.services')
 			.catch(function(error) {
 				if (error.status === 404) {
 					console.log('patients: '+id+' has no info');
+					deferred.reject(error);
+				}
+				else 
+					console.log(error);
+			});
+			return deferred.promise;
+		}
+		this.remove = function(id) {
+			var deferred = $q.defer();
+			$http({
+				method: "DELETE",
+				url: "https://dev.api.wsuhealth.wsu.edu:5025/patients/remove",
+			})
+			.then(function(res) {
+				deferred.resolve(res.data);
+			})
+			.catch(function(error) {
+				if (error.status === 404) {
+					console.log('unable to remove patient: '+id);
 					deferred.reject(error);
 				}
 				else 

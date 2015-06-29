@@ -4,36 +4,60 @@
 
 angular.module('myapp.controllers')
   .controller('AccountController',
-    function($scope, $q, DoctorService) {
-      DoctorService.doctor_info($scope.currentUser.email).then(function (data) {
+    function($scope, $q, DoctorService, PatientService) {
+      var service;
+      if ($scope.userType === "patient") service = PatientService;
+      else if ($scope.userType === "doctor" || $scope.userType === "admin") service = DoctorService;
+
+      service.info($scope.currentUser.email).then(function (data) {
       	delete data['__v'];
-      	delete data['_id'];
+        delete data['_id'];
+
+        $scope.first_name = data.first_name;
+        $scope.last_name = data.last_name;
+        $scope.email = data.email;
+
+        delete data['first_name'];
+        delete data['last_name'];
+        delete data['email'];
+
+        console.log($scope.first_name);
 
         $scope.account_info = data;
+
+        $scope.change_states = {};
+        for (var each in $scope.account_info) {
+          $scope.change_states[each] = false
+        }
+        $scope.change_states.first_name = false;
+        $scope.change_states.last_name = false;
+        $scope.change_states.email = false;
+
       });
-      $scope.change__first_name = false;
-      $scope.change__last_name = false;
-      $scope.change__email = false;
-      $scope.change__hospital = false;
-      $scope.change__specialty = false;
 
       var change__all = [
 	      "change__first_name",
 				"change__last_name",
 				"change__email",
 				"change__hospital",
-				"change__specialty"
+				"change__specialty",
+        "change__age",
+        "change__height",
+        "change__weight",
+        "change__sex"
 			]
+
+      console.log($scope.userType);
 
       $scope.changeState = function (changeMe) {
       	var old = change__all;
-      	$scope[changeMe] = ($scope[changeMe]) ? false : true;
+      	$scope.change_states[changeMe] = ($scope.change_states[changeMe]) ? false : true;
 
       	// set all others to false
       	change__all.splice(change__all.indexOf(changeMe),1);
 
-      	for (var each in change__all) {
-      		$scope[change__all[each]] = false;
+      	for (var each in $scope.change_states) {
+      		$scope.change_states[change__all[each]] = false;
       	}
 
       	// set $scope.change__all back to original value
@@ -41,8 +65,7 @@ angular.module('myapp.controllers')
       }
 
       $scope.deleteAccount = function() {
-        console.log('here');
-        DoctorService.remove_doctor(function (removed_doctor) {
+        service.remove(function (removed) {
           LoginService.logout().then(function () {
             $scope.currentUser = null;
           });

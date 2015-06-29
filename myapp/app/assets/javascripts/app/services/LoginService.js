@@ -54,6 +54,8 @@ angular.module('myapp.services')
 				service._user = null;
 				$cookieStore.remove('user');
 				$rootScope.$broadcast("user:unset");
+				$cookieStore.remove('userType');
+				$rootScope.$broadcast("userType:unset");
 
 				$rootScope.globals = {};
 				$cookieStore.remove('globals');

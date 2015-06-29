@@ -1,4 +1,4 @@
-// app/assets/javascripts/app/controllers/UsersCtrl.js
+// app/assets/javascripts/app/controllers/PatientsCtrl.js
 
 'use strict';
 

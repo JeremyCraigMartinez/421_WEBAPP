@@ -22,6 +22,7 @@ angular.module('myapp.directives')
 				$scope.logout = function() {
 					LoginService.logout().then(function() {
 						$scope.currentUser = null;
+						$scope.userType = null;
 					});
 				};
 			}

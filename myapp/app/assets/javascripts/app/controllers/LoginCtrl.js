@@ -72,7 +72,7 @@ angular.module('myapp.controllers')
 							}
 							else {
 								$scope.user = user;
-								$location.path('/users');
+								$location.path('/patients');
 							}
 						});
 					});
@@ -87,7 +87,7 @@ angular.module('myapp.controllers')
 					}
 					else {
 						$scope.user = user;
-						if ($scope.userType === "doctor") $location.path('/users');
+						if ($scope.userType === "doctor") $location.path('/patients');
 						else if ($scope.userType === "admin") $location.path('/admin');
 						else if ($scope.userType === "patient") $location.path('/patient_home');
 					}

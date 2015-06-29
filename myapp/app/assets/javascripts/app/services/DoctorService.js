@@ -40,7 +40,7 @@ angular.module('myapp.services')
 			});
 			return deferred.promise;
 		}
-		this.doctor_info = function(id) {
+		this.info = function(id) {
 			var deferred = $q.defer();
 			$http({
 				method: "GET",
@@ -59,7 +59,7 @@ angular.module('myapp.services')
 			});
 			return deferred.promise;
 		}
-		this.remove_doctor = function(id) {
+		this.remove = function(id) {
 			var deferred = $q.defer();
 			$http({
 				method: "DELETE",

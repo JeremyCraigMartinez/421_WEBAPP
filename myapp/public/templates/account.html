@@ -8,6 +8,7 @@
       <h1>Account</h1>
     </div>
   </div><!-- /row -->
+  <h1>first_name</h1>
 	<table class="table table-striped">
 		<thead>
 			<th width="20%">field</th>
@@ -21,7 +22,7 @@
 			</td>
 			<td>
 				<div ng-hide="change__first_name">
-					{{account_info.first_name}}
+					{{first_name}}
 				</div>
 				<div ng-show="change__first_name" class="input-group" style="width:50%;">
 					<input class="form-control" type="text" placeholder="New first name...">
@@ -41,7 +42,7 @@
 			</td>
 			<td>
 				<div ng-hide="change__last_name">
-					{{account_info.last_name}}
+					{{last_name}}
 				</div>
 				<div ng-show="change__last_name" class="input-group" style="width:50%;">
 					<input class="form-control" type="text" placeholder="New first name...">
@@ -61,7 +62,7 @@
 			</td>
 			<td>
 				<div ng-hide="change__email">
-					{{account_info.email}}
+					{{email}}
 				</div>
 				<div ng-show="change__email" class="input-group" style="width:50%;">
 					<input class="form-control" type="text" placeholder="New first name...">
@@ -75,15 +76,15 @@
 			</td>
 		</tr>
 		<!-- row -->
-		<tr>
+		<tr ng-repeat-start="(key,field) in account_info">
 			<td>
-				Hospital
+				{{key}}
 			</td>
 			<td>
-				<div ng-hide="change__hospital">
-					{{account_info.hospital}}
+				<div ng-hide="change_states[key]">
+					{{field}}
 				</div>
-				<div ng-show="change__hospital" class="input-group" style="width:50%;">
+				<div ng-show="change_states[key]" class="input-group" style="width:50%;">
 					<input class="form-control" type="text" placeholder="New first name...">
 					<span class="input-group-btn">
 						<button type="button" class="btn btn-primary">Submit</button>
@@ -91,29 +92,10 @@
 				</div>
 			</td>
 			<td width="20%">
-				<a ng-model="change__hospital" ng-click="changeState('change__hospital')" href="#">change me</a>
+				<a ng-model="change_states[key]" ng-click="changeState(key)" href="#">change me</a>
 			</td>
 		</tr>
-		<!-- row -->
-		<tr>
-			<td>
-				Specialy
-			</td>
-			<td>
-				<div ng-hide="change__specialty">
-					{{account_info.specialty}}
-				</div>
-				<div ng-show="change__specialty" class="input-group" style="width:50%;">
-					<input class="form-control" type="text" placeholder="New first name...">
-					<span class="input-group-btn">
-						<button type="button" class="btn btn-primary">Submit</button>
-					</span>
-				</div>
-			</td>
-			<td width="20%">
-				<a ng-model="change__specialty" ng-click="changeState('change__specialty')" href="#">change me</a>
-			</td>
-		</tr>
+		<tr ng-repeat-end></tr>
 	</table>
 	<hr>
 
