@@ -21,10 +21,10 @@
 				First Name
 			</td>
 			<td>
-				<div ng-hide="change__first_name">
+				<div ng-hide="change_states['first_name']">
 					{{first_name}}
 				</div>
-				<div ng-show="change__first_name" class="input-group" style="width:50%;">
+				<div ng-show="change_states['first_name']" class="input-group" style="width:50%;">
 					<input class="form-control" type="text" placeholder="New first name...">
 					<span class="input-group-btn">
 						<button type="button" class="btn btn-primary">Submit</button>
@@ -32,7 +32,7 @@
 				</div>
 			</td>
 			<td width="20%">
-				<a ng-model="change__first_name" ng-click="changeState('change__first_name')" href="#">change me</a>
+				<a ng-model="change_states['first_name']" ng-click="changeState('first_name')" href="#">change me</a>
 			</td>
 		</tr>
 		<!-- row -->
@@ -41,10 +41,10 @@
 				Last Name
 			</td>
 			<td>
-				<div ng-hide="change__last_name">
+				<div ng-hide="change_states['last_name']">
 					{{last_name}}
 				</div>
-				<div ng-show="change__last_name" class="input-group" style="width:50%;">
+				<div ng-show="change_states['last_name']" class="input-group" style="width:50%;">
 					<input class="form-control" type="text" placeholder="New first name...">
 					<span class="input-group-btn">
 						<button type="button" class="btn btn-primary">Submit</button>
@@ -52,7 +52,7 @@
 				</div>
 			</td>
 			<td width="20%">
-				<a ng-model="change__last_name" ng-click="changeState('change__last_name')" href="#">change me</a>
+				<a ng-model="change_states['last_name']" ng-click="changeState('last_name')" href="#">change me</a>
 			</td>
 		</tr>
 		<!-- row -->
@@ -61,10 +61,10 @@
 				Email
 			</td>
 			<td>
-				<div ng-hide="change__email">
+				<div ng-hide="change_states['email']">
 					{{email}}
 				</div>
-				<div ng-show="change__email" class="input-group" style="width:50%;">
+				<div ng-show="change_states['email']" class="input-group" style="width:50%;">
 					<input class="form-control" type="text" placeholder="New first name...">
 					<span class="input-group-btn">
 						<button type="button" class="btn btn-primary">Submit</button>
@@ -72,7 +72,7 @@
 				</div>
 			</td>
 			<td width="20%">
-				<a ng-model="change__email" ng-click="changeState('change__email')" href="#">change me</a>
+				<a ng-model="change_states['email']" ng-click="changeState('email')" href="#">change me</a>
 			</td>
 		</tr>
 		<!-- row -->
