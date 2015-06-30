@@ -57,8 +57,6 @@ angular.module('myapp.controllers')
       	change__all.splice(change__all.indexOf(changeMe),1);
 
       	for (var each in $scope.change_states) {
-          console.log(each);
-          console.log($scope.change_states[each]);
       		$scope.change_states[change__all[each]] = false;
       	}
 
@@ -67,7 +65,13 @@ angular.module('myapp.controllers')
       }
 
       $scope.changeField = function (field) {
-        alert(field);
+        if (field in $scope.account_info) tmp = $scope.account_info;
+        else if (field in $scope) tmp = $scope;
+
+        //POST request to API
+        tmp[field] = $scope.new_fields[field];
+        $scope.new_fields[field] = null;
+
         $scope.change_states[field] = false;
       }
 

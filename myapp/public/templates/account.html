@@ -24,7 +24,7 @@
 					{{first_name}}
 				</div>
 				<div ng-show="change_states['first_name']" class="input-group" style="width:50%;">
-					<input class="form-control" type="text" placeholder="New first name...">
+					<input class="form-control" type="text" placeholder="New first name..." ng-model="new_fields['first_name']">
 					<span class="input-group-btn">
 						<button type="button" class="btn btn-primary" ng-click="changeField('first_name')">Submit</button>
 					</span>
@@ -44,7 +44,7 @@
 					{{last_name}}
 				</div>
 				<div ng-show="change_states['last_name']" class="input-group" style="width:50%;">
-					<input class="form-control" type="text" placeholder="New first name...">
+					<input class="form-control" type="text" placeholder="New first name..." ng-model="new_fields['last_name']">
 					<span class="input-group-btn">
 						<button type="button" class="btn btn-primary" ng-click="changeField('last_name')">Submit</button>
 					</span>
@@ -64,7 +64,7 @@
 					{{email}}
 				</div>
 				<div ng-show="change_states['email']" class="input-group" style="width:50%;">
-					<input class="form-control" type="text" placeholder="New first name...">
+					<input class="form-control" type="text" placeholder="New first name..." ng-model="new_fields['email']">
 					<span class="input-group-btn">
 						<button type="button" class="btn btn-primary" ng-click="changeField('email')">Submit</button>
 					</span>
@@ -84,7 +84,7 @@
 					{{field}}
 				</div>
 				<div ng-show="change_states[key]" class="input-group" style="width:50%;">
-					<input class="form-control" type="text" placeholder="New first name...">
+					<input class="form-control" type="text" placeholder="New first name..." ng-model="new_fields[key]">
 					<span class="input-group-btn">
 						<button type="button" class="btn btn-primary" ng-click="changeField(key)">Submit</button>
 					</span>
