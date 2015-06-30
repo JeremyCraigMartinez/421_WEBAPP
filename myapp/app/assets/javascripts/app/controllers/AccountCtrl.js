@@ -57,7 +57,7 @@ angular.module('myapp.controllers')
       	change__all.splice(change__all.indexOf(changeMe),1);
 
       	for (var each in $scope.change_states) {
-      		$scope.change_states[each] = false;
+      		$scope.change_states[change__all[each]] = false;
       	}
 
       	// set $scope.change__all back to original value
