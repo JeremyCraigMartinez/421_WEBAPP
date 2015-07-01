@@ -4,7 +4,7 @@
 
 angular.module('myapp.controllers')
   .controller('AccountController',
-    function($scope, $q, DoctorService, PatientService) {
+    function($scope, $q, DoctorService, PatientService, LoginService, $location) {
       var service;
       if ($scope.userType === "patient") service = PatientService;
       else if ($scope.userType === "doctor" || $scope.userType === "admin") service = DoctorService;
@@ -80,9 +80,11 @@ angular.module('myapp.controllers')
       $scope.deleteAccount = function() {
         var ans = confirm("Are you sure you want to delete your account? This action is NOT reversable");
         if (ans) {
-          service.remove(function (removed) {
+          service.remove().then(function (removed) {
             LoginService.logout().then(function () {
+              alert('here');
               $scope.currentUser = null;
+              $scope.userType = null;
               $location.path('/login');              
             });
           });          

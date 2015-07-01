@@ -19,6 +19,14 @@ angular.module('myapp.directives')
 					$scope.userType = userType;
 				});
 
+				$scope.$on("user:unset", function(evt, currentUser) {
+					$scope.currentUser = null;
+				});
+
+				$scope.$on("userType:unset", function(evt, userType) {
+					$scope.userType = null;
+				});
+
 				$scope.logout = function() {
 					LoginService.logout().then(function() {
 						$scope.currentUser = null;
