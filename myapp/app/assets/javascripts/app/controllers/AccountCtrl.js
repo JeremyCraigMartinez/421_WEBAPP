@@ -4,7 +4,7 @@
 
 angular.module('myapp.controllers')
   .controller('AccountController',
-    function($scope, $q, DoctorService, PatientService, LoginService, $location) {
+    function($scope, $q, DoctorService, PatientService, LoginService, $location, GroupService) {
       var service;
       if ($scope.userType === "patient") service = PatientService;
       else if ($scope.userType === "doctor" || $scope.userType === "admin") service = DoctorService;
@@ -35,6 +35,18 @@ angular.module('myapp.controllers')
 
       });
 
+      $scope.new_entry = {
+        first_name : "first name",
+        last_name : "last name",
+        email : "email",
+        hospital : "hospital",
+        specialty : "specialty",
+        age : "age",
+        height : "height",
+        weight : "weight",
+        sex : "sex",
+      }
+
       var change__all = [
 	      "change__first_name",
 				"change__last_name",
@@ -44,10 +56,25 @@ angular.module('myapp.controllers')
         "change__age",
         "change__height",
         "change__weight",
-        "change__sex"
+        "change__sex",
 			]
 
-      console.log($scope.userType);
+      GroupService.groups().then(function(groups) {
+        $scope.list_of_groups = [];
+        for (var group in groups) {
+          $scope.list_of_groups.push(groups[group]._id);
+        }
+      });
+      $scope.selected_groups = ($scope.group) ? [$scope.group] : [];
+      $scope.remove_group = function (group) {
+        $scope.new_fields.group = null;
+        $scope.list_of_groups.push(group);
+        $scope.selected_groups.splice($scope.selected_groups.indexOf(group),1);
+      }
+      $scope.setGroup = function(group){
+        $scope.list_of_groups.splice($scope.list_of_groups.indexOf(group),1);
+        $scope.selected_groups.push(group);
+      };
 
       $scope.changeState = function (changeMe) {
       	var old = change__all;
