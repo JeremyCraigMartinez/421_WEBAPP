@@ -64,6 +64,7 @@ angular.module('myapp.controllers')
       	change__all.push(changeMe);
       }
 
+      $scope.new_fields = {};
       $scope.changeField = function (field) {
         if (field in $scope.account_info) tmp = $scope.account_info;
         else if (field in $scope) tmp = $scope;
