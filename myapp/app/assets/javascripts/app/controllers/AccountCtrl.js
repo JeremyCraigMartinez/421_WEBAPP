@@ -69,7 +69,8 @@ angular.module('myapp.controllers')
         if (field in $scope.account_info) tmp = $scope.account_info;
         else if (field in $scope) tmp = $scope;
 
-        console.log(tmp);
+        console.log(field +" in "+$scope.account_info +": "+ field in $scope.account_info);
+        console.log(field +" in "+$scope +": "+ field in $scope);
         //POST request to API
         tmp[field] = $scope.new_fields[field];
         $scope.new_fields[field] = null;
