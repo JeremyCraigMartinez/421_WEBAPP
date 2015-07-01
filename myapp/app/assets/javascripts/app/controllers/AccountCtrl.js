@@ -78,12 +78,14 @@ angular.module('myapp.controllers')
       }
 
       $scope.deleteAccount = function() {
-        $('#deleteAccount'.confirmation({"yes":true,"no":false}));
-        return;/*
-        service.remove(function (removed) {
-          LoginService.logout().then(function () {
-            $scope.currentUser = null;
-          });
-        });*/
+        var ans = confirm("Are you sure you want to delete your account? This action is NOT reversable");
+        if (ans) {
+          service.remove(function (removed) {
+            LoginService.logout().then(function () {
+              $scope.currentUser = null;
+              $location.path('/login');              
+            });
+          });          
+        }
       }      
   });
