@@ -105,6 +105,39 @@
 			</td>
 		</tr>
 		<!-- row -->
+		<tr>
+			<td>
+				Password
+			</td>
+			<td>
+				***********
+				<!-- Modal -->
+				<div class="modal fade" id="password" tabindex="-1" role="dialog" aria-labelledby="passwordLabel" aria-hidden="true">
+				  <div class="modal-dialog">
+				    <div class="modal-content">
+				      <div class="modal-header">
+				        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				        <h4 class="modal-title" id="passwordLabel">Enter new password</h4>
+				      </div>
+				      <div class="modal-body">
+				        <input ng-model="new_fields['password_old']" type="password" class="form-control" placeholder="enter old password..."></input><br>
+				        <input ng-model="new_fields['password']" type="password" class="form-control" placeholder="enter new password..."></input><br>
+				        <input ng-model="new_fields['password_second']" type="password" class="form-control" placeholder="enter new password again..."></input>
+				      </div>
+				      <div class="modal-footer">
+				        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				        <button ng-show="new_fields['password']===new_fields['password_second'] && new_fields['password']" ng-click="changeField('password')" type="button" class="btn btn-primary" data-dismiss="modal">Save</button>
+				        <button ng-hide="new_fields['password']===new_fields['password_second']" type="button" class="btn btn-primary" data-dismiss="modal" disabled>Password's Don't Match</button>
+				      </div>
+				    </div>
+				  </div>
+				</div>
+			</td>
+			<td width="20%">
+	      <a data-toggle="modal" data-target="#password" href="#">change me</a>
+			</td>
+		</tr>
+		<!-- row -->
 		<tr ng-repeat-start="(key,field) in account_info">
 			<td>
 				{{key}}
@@ -121,35 +154,30 @@
 					        <h4 class="modal-title" id="{{key}}Label">Enter booger new {{key}}</h4>
 					      </div>
 					      <div class="modal-body">
-					        
-
-<div class="form-group">
-  <label for="inputGroup" class="control-label">Group</label>
-  <table class="table table-striped">
-    <thead>
-      <tr>
-        <th></th>
-      </tr>
-    </head>
-    <tbody>
-      <tr ng-repeat="group in selected_groups track by $index">
-        <td>
-          <a href="#" ng-click="remove_group(group)"><span class="glyphicon glyphicon-remove"></span></a> {{group}}
-        </td>
-      </tr>
-    </tbody>
-  </table>
-  <select id="inputGroup" class="form-control" ng-model="selected_groups" ng-options="g as g for g in list_of_groups" ng-change="setGroup(new_fields[key])">
-  </select>
-</div>
-
-
-
+									<div class="form-group">
+									  <label for="inputGroup" class="control-label">Group</label>
+									  <table class="table table-striped">
+									    <thead>
+									      <tr>
+									        <th></th>
+									      </tr>
+									    </head>
+									    <tbody>
+									      <tr ng-repeat="group in selected_groups track by $index">
+									        <td>
+									          <a href="#" ng-click="remove_group(group)"><span class="glyphicon glyphicon-remove"></span></a> {{group}}
+									        </td>
+									      </tr>
+									    </tbody>
+									  </table>
+									  <select id="inputGroup" class="form-control" ng-model="new_fields[key]" ng-options="g as g for g in list_of_groups" ng-change="setGroup(new_fields[key])">
+									  </select>
+									</div>
 					        <!--<input ng-model="new_fields[key]" type="text" class="form-control"></input>-->
 					      </div>
 					      <div class="modal-footer">
 					        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-					        <button ng-click="changeField(key)" type="button" class="btn btn-primary" data-dismiss="modal">Save</button>
+					        <button ng-click="changeField(key, selected_groups)" type="button" class="btn btn-primary" data-dismiss="modal">Save</button>
 					      </div>
 					    </div>
 					  </div>

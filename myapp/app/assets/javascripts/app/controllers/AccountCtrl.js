@@ -72,6 +72,7 @@ angular.module('myapp.controllers')
         $scope.selected_groups.splice($scope.selected_groups.indexOf(group),1);
       }
       $scope.setGroup = function(group){
+        console.log(group);
         $scope.list_of_groups.splice($scope.list_of_groups.indexOf(group),1);
         $scope.selected_groups.push(group);
       };
@@ -92,16 +93,25 @@ angular.module('myapp.controllers')
       }
 
       $scope.new_fields = {};
-      $scope.changeField = function (field) {
+      $scope.changeField = function (field, groups) {
         var tmp;
+        var api_call;
         if (field in $scope.account_info) tmp = $scope.account_info;
         else if (field in $scope) tmp = $scope;
 
-        //POST request to API
-        tmp[field] = $scope.new_fields[field];
-        $scope.new_fields[field] = null;
+        if (field === 'email' || field === 'password') api_call = "update_account"
+        else api_call = "update_info"
 
-        $scope.change_states[field] = false;
+        //POST request to API
+        var packet = {}
+        packet[field] = $scope.new_fields[field];
+        service[api_call](packet).then(function (updated) {
+          if (groups) tmp[field] = groups
+          else tmp[field] = $scope.new_fields[field];
+          $scope.new_fields[field] = null;
+
+          $scope.change_states[field] = false;
+        });
       }
 
       $scope.deleteAccount = function() {
